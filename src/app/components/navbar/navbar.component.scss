@@ -1,0 +1,83 @@
+@import "../../app.component.scss";
+
+.main-navbar {
+  font-family: $primary_font;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 60px;
+  background-color: $primary_color;
+  -webkit-app-region: drag;
+  .content {
+    padding: 0 25px;
+    .nav-section {
+      width: 50%;
+      display: inline-block;
+      vertical-align: middle
+    }
+  }
+
+  .left-section {
+    .header {
+      vertical-align: middle;
+      display: inline-block;
+      margin: 0 50px 0 0;
+      font-size: 23px;
+      font-weight: 600;
+      color: transparent;
+      cursor: default;
+    }
+    .search-box-container {
+      display: inline-block;
+      position: relative;
+      -webkit-app-region: no-drag;
+      .fa-search {
+        position: absolute;
+        color: $secondary_color;
+        top: 8px;
+        left: 8px;
+        font-size: 14px;
+        cursor: text;
+      }
+      .search-box {
+        vertical-align: middle;
+        background-color: $primary_color_dark;
+        border-radius: 25px;
+        border: none;
+        outline: none;
+        padding: 0 10px 0 30px;
+        color: $text_color;
+        font-size: 13px;
+        height: 30px;
+        min-width: 170px;
+      }
+    }
+  }
+
+  .right-section {
+    text-align: right;
+    display: flex;
+    .nav-btn {
+      font-size: 12px;
+      min-width: unset;
+      min-height: unset;
+      line-height: 1;
+      padding: 10px 15px;
+      font-weight: 300;
+      outline: none;
+      -webkit-app-region: no-drag;
+    }
+    .gopro-btn {
+      color: #ffffff;
+      background-color: $accent_color;
+      font-size: 11px;
+      margin-right: 15px;
+    }
+    .login-btn {
+      color: $secondary_color;
+    }
+    .signup-btn {
+      color: $text_color;
+    }
+  }
+}
