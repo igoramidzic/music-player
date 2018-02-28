@@ -8,8 +8,12 @@
   height: 60px;
   background-color: $primary_color;
   -webkit-app-region: drag;
+  box-shadow: 0 4px 5px rgb(39, 42, 67);
+  position: absolute;
+  width: 100%;
+  z-index: 999;
   .content {
-    padding: 0 25px;
+    padding: 0 25px 0 105px;
     .nav-section {
       width: 50%;
       display: inline-block;
