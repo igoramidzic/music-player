@@ -5,7 +5,7 @@ const url = require('url');
 let win;
 
 function createWindow () {
-  win = new BrowserWindow({width: 800, height: 600});
+  win = new BrowserWindow({minWidth: 800, minHeight: 630, titleBarStyle: 'hiddenInset'});
 
   // load the dist folder from Angular
   win.loadURL(url.format({
@@ -27,12 +27,12 @@ app.on('ready', createWindow);
 
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
-  app.quit()
-}
+    app.quit()
+  }
 });
 
 app.on('activate', () => {
   if (win === null) {
-  createWindow()
-}
+    createWindow()
+  }
 });
