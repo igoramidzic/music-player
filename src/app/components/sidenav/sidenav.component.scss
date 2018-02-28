@@ -5,7 +5,6 @@
   background-color: $primary_color;
   width: 80px;
   height: 100vh;
-  color: $text_color;
   padding: 110px 0 0 0;
 
   .link-list {
@@ -19,9 +18,14 @@
         margin-bottom: 0;
       }
       .link-btn {
+        color: $secondary_color;
         min-width: 50px;
         font-size: 18px;
         outline: none;
+        cursor: default;
+      }
+      .active {
+        color: $text_color;
       }
     }
   }

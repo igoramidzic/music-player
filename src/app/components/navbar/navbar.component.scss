@@ -7,7 +7,7 @@
   justify-content: center;
   height: 60px;
   background-color: $primary_color;
-  -webkit-app-region: drag;
+  //-webkit-app-region: drag;
   box-shadow: 0 4px 5px rgb(39, 42, 67);
   position: absolute;
   width: 100%;
@@ -22,19 +22,12 @@
   }
 
   .left-section {
-    .header {
-      vertical-align: middle;
-      display: inline-block;
-      margin: 0 50px 0 0;
-      font-size: 23px;
-      font-weight: 600;
-      color: transparent;
-      cursor: default;
-    }
     .search-box-container {
       display: inline-block;
       position: relative;
       -webkit-app-region: no-drag;
+      background-color: $primary_color_dark;
+      border-radius: 25px;
       .fa-search {
         position: absolute;
         color: $secondary_color;
@@ -42,11 +35,12 @@
         left: 8px;
         font-size: 14px;
         cursor: text;
+        z-index: 1;
       }
       .search-box {
+        z-index: 999;
         vertical-align: middle;
-        background-color: $primary_color_dark;
-        border-radius: 25px;
+        background-color: transparent;
         border: none;
         outline: none;
         padding: 0 10px 0 30px;
@@ -54,6 +48,10 @@
         font-size: 13px;
         height: 30px;
         min-width: 170px;
+        transition: min-width .2s ease-in-out;
+        &:focus {
+          min-width: 230px;
+        }
       }
     }
   }
@@ -70,6 +68,7 @@
       font-weight: 300;
       outline: none;
       -webkit-app-region: no-drag;
+      cursor: default;
     }
     .gopro-btn {
       color: #ffffff;
