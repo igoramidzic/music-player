@@ -8,8 +8,12 @@
     </div><!--
     --><div class="nav-section right-section">
       <button class="nav-btn gopro-btn" mat-button>GO PRO</button><!--
-      --><button class="nav-btn login-btn" mat-button>Log in</button><!--
-      --><button class="nav-btn signup-btn" mat-button>Sign up</button>
+      --><button
+            [routerLink]="['login']"
+            class="nav-btn login-btn" mat-button>Log in</button><!--
+      --><button
+            [routerLink]="['signup']"
+            class="nav-btn signup-btn" mat-button>Sign up</button>
     </div>
   </div>
 </div>

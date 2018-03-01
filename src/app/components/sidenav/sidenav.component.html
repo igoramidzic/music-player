@@ -1,19 +1,44 @@
 <div class="main-sidenav">
   <ul class="link-list">
     <li class="link-item">
-      <button mat-button class="link-btn active"><i class="fas fa-home"></i></button>
+      <button
+        mat-button
+        [routerLink]="['']"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{exact: true}"
+        class="link-btn"><i class="fas fa-home"></i></button>
     </li>
     <li class="link-item">
-      <button mat-button class="link-btn"><i class="fas fa-cogs"></i></button>
+      <button
+        mat-button
+        [routerLink]="['settings']"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{exact: true}"
+        class="link-btn"><i class="fas fa-cogs"></i></button>
     </li>
     <li class="link-item">
-      <button mat-button class="link-btn"><i class="far fa-file-alt"></i></button>
+      <button
+        mat-button
+        [routerLink]="['blank']"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{exact: true}"
+        class="link-btn"><i class="far fa-file-alt"></i></button>
     </li>
     <li class="link-item">
-      <button mat-button class="link-btn"><i class="far fa-bell"></i></button>
+      <button
+        mat-button
+        [routerLink]="['notifications']"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{exact: true}"
+        class="link-btn"><i class="far fa-bell"></i></button>
     </li>
     <li class="link-item">
-      <button mat-button class="link-btn"><i class="far fa-comment"></i></button>
+      <button
+        mat-button
+        [routerLink]="['blank']"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{exact: true}"
+        class="link-btn"><i class="far fa-comment"></i></button>
     </li>
   </ul>
 </div>
