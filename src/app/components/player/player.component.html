@@ -1,0 +1,89 @@
+<div class="main-controls-container">
+  <div class="content">
+    <div class="outer-sec nav-section left-section">
+      Left
+    </div><!--
+    --><div class="mid-sec nav-section right-section">
+      middle
+    </div><!--
+    --><div class="outer-sec nav-section right-section">
+      Right
+    </div>
+  </div>
+</div>
+
+<!--<div class="main-controls-container">-->
+  <!--<div class="row">-->
+    <!--<div class="col-sm-3 current-song-container vertically-center">-->
+      <!--<div class="content-container vertically-center">-->
+        <!--<div class="img-container">-->
+          <!--&lt;!&ndash;<img class="img-fluid" alt="">&ndash;&gt;-->
+        <!--</div>-->
+        <!--<div class="song-info-container">-->
+          <!--&lt;!&ndash;<p class="song-title">{{ songs[currentSongIndex].name }}</p>&ndash;&gt;-->
+          <!--&lt;!&ndash;<p class="song-artist">{{ songs[currentSongIndex].artist}}</p>&ndash;&gt;-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+
+    <!--<div class="col-sm-6 player-container vertically-center">-->
+      <!--<div class="content-container">-->
+        <!--<div class="controls-container">-->
+          <!--<ul class="controls-list">-->
+            <!--<li class="control-item position-center" (click)="onNavPlayer('back')">-->
+              <!--<i class="fas fa-step-backward"></i>-->
+            <!--</li>&lt;!&ndash;-->
+            <!--&ndash;&gt;<li class="control-item" (click)="onTogglePlay()">-->
+              <!--<span *ngIf="!playing">-->
+                <!--<i class="far pause-play-btn fa-play-circle"></i>-->
+              <!--</span>-->
+            <!--<span *ngIf="playing">-->
+                <!--<i class="far pause-play-btn fa-pause-circle"></i>-->
+              <!--</span>-->
+          <!--</li>&lt;!&ndash;-->
+            <!--&ndash;&gt;<li class="control-item position-center" (click)="onNavPlayer('forward')">-->
+            <!--<i class="fas fa-step-forward"></i>-->
+          <!--</li>-->
+          <!--</ul>-->
+          <!--<audio [src]="songs[currentSongIndex].src" #myAudio></audio>-->
+
+        <!--</div>-->
+
+        <!--<div class="progress-container">-->
+          <!--<div class="inline-container time-container">-->
+            <!--&lt;!&ndash;<span class="time">{{ audio.currentTime | time }}</span>&ndash;&gt;-->
+            <!--<span class="time">1:30</span>-->
+          <!--</div>&lt;!&ndash;-->
+          <!--&ndash;&gt;<div class="inline-container slider-container">-->
+          <!--<mat-slider-->
+            <!--class="progress-bar"></mat-slider>-->
+        <!--</div>&lt;!&ndash;-->
+          <!--&ndash;&gt;<div class="inline-container time-container">-->
+          <!--&lt;!&ndash;<span class="time">{{ audio.duration - audio.currentTime | time }}</span>&ndash;&gt;-->
+          <!--<span class="time">1:30</span>-->
+        <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+
+    <!--<div class="col-sm-3 volume-container vertically-center">-->
+      <!--<div class="row content">-->
+        <!--<div class="content col-sm-12">-->
+          <!--<div class="volume-icon">-->
+            <!--<i class="fas fa-volume-up"></i>-->
+          <!--</div>-->
+          <!--&lt;!&ndash;<div class="volume-icon" *ngIf="audio.volume > 0.5">&ndash;&gt;-->
+            <!--&lt;!&ndash;<i class="fas fa-volume-up"></i>&ndash;&gt;-->
+          <!--&lt;!&ndash;</div>&ndash;&gt;-->
+          <!--&lt;!&ndash;<div class="volume-icon" *ngIf="audio.volume <= 0.5 && audio.volume > 0.01">&ndash;&gt;-->
+            <!--&lt;!&ndash;<i class="fas fa-volume-down"></i>&ndash;&gt;-->
+          <!--&lt;!&ndash;</div>&ndash;&gt;-->
+          <!--&lt;!&ndash;<div class="volume-icon" *ngIf="audio.volume == 0">&ndash;&gt;-->
+            <!--&lt;!&ndash;<i class="fas fa-volume-off"></i>&ndash;&gt;-->
+          <!--&lt;!&ndash;</div>&ndash;&gt;-->
+          <!--<mat-slider class="volume-bar"></mat-slider>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</div>-->

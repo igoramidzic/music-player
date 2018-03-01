@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
-
+import {MatSliderModule} from '@angular/material/slider';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -13,6 +13,7 @@ import { SettingsComponent } from './components/pages/settings/settings.componen
 import { NotificationsComponent } from './components/pages/notifications/notifications.component';
 import { SignupComponent } from './components/pages/signup/signup.component';
 import { LoginComponent } from './components/pages/login/login.component';
+import { PlayerComponent } from './components/player/player.component';
 
 
 @NgModule({
@@ -24,13 +25,15 @@ import { LoginComponent } from './components/pages/login/login.component';
     SettingsComponent,
     NotificationsComponent,
     SignupComponent,
-    LoginComponent
+    LoginComponent,
+    PlayerComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatButtonModule
+    MatButtonModule,
+    MatSliderModule
   ],
   providers: [],
   bootstrap: [AppComponent]
