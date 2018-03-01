@@ -3,10 +3,10 @@
 .main-sidenav {
   font-family: $primary_font;
   background-color: $primary_color;
-  width: 80px;
+  width: 70px;
   height: 100vh;
   padding: 110px 0 0 0;
-
+  position: absolute;
   .link-list {
     margin: 0;
     padding: 0;
