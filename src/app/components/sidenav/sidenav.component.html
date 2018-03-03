@@ -1,44 +1,44 @@
 <div class="main-sidenav">
   <ul class="link-list">
     <li class="link-item">
-      <button
-        mat-button
+      <a
         [routerLink]="['']"
         routerLinkActive="active"
         [routerLinkActiveOptions]="{exact: true}"
-        class="link-btn"><i class="fas fa-home"></i></button>
+        class="link-btn"><i class="icon fas fa-home"></i>
+        <span class="link-name">YOUR ZONE</span></a>
     </li>
     <li class="link-item">
-      <button
-        mat-button
+      <a
         [routerLink]="['settings']"
         routerLinkActive="active"
         [routerLinkActiveOptions]="{exact: true}"
-        class="link-btn"><i class="fas fa-cogs"></i></button>
+        class="link-btn"><i class="icon fas fa-folder"></i>
+        <span class="link-name">BROWSE</span></a>
     </li>
     <li class="link-item">
-      <button
-        mat-button
+      <a
         [routerLink]="['blank']"
         routerLinkActive="active"
         [routerLinkActiveOptions]="{exact: true}"
-        class="link-btn"><i class="far fa-file-alt"></i></button>
+        class="link-btn"><i class="icon fab fa-mixcloud"></i>
+        <span class="link-name">RADIO</span></a>
     </li>
     <li class="link-item">
-      <button
-        mat-button
+      <a
         [routerLink]="['notifications']"
         routerLinkActive="active"
         [routerLinkActiveOptions]="{exact: true}"
-        class="link-btn"><i class="far fa-bell"></i></button>
+        class="link-btn"><i class="icon fas fa-list"></i>
+        <span class="link-name">PLAYLISTS</span></a>
     </li>
     <li class="link-item">
-      <button
-        mat-button
+      <a
         [routerLink]="['blank']"
         routerLinkActive="active"
         [routerLinkActiveOptions]="{exact: true}"
-        class="link-btn"><i class="far fa-comment"></i></button>
+        class="link-btn"><i class="icon fas fa-star"></i>
+        <span class="link-name">FEATURED</span></a>
     </li>
   </ul>
 </div>
