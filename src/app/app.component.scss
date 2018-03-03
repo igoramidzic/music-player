@@ -1,19 +1,22 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700');
 
 // Colors
-$primary_color: #2A2E4A;
+$primary_color: #191926;
 $primary_color_dark: #242740;
+$primary_color_light: #30303E;
 $secondary_color: #6D6F8E;
-$accent_color: #814CE7;
-$text_color: #DFDFE4;
+$accent_color: #6FCBFA;
+$text_color: #DBDBDD;
+
+$side_nav_width: 250px;
 
 // Fonts
 $primary_font: 'Roboto', sans-serif;
 
-.content-container {
-  padding: 65px 0 0 70px;
+.main-content-container {
+  padding: 0 0 0 $side_nav_width;
   height: 100vh;
-  background-color: $primary_color_dark;
+  background-color: $primary_color;
   font-family: $primary_font;
 }
 

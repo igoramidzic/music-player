@@ -2,16 +2,22 @@
 
 .main-sidenav {
   font-family: $primary_font;
-  background-color: $primary_color;
-  width: 70px;
+  background-color: $primary_color_light;
+  width: $side_nav_width;
   height: 100vh;
-  padding: 110px 0 0 0;
+  padding: 25px 25px 0 40px;
   position: absolute;
+  background: #181825;
+  background: -moz-linear-gradient(top, #181825 0%, #20202c 32%, #31313f 100%);
+  background: -webkit-linear-gradient(top, #181825 0%, #20202c 32%, #31313f 100%);
+  background: -o-linear-gradient(top, #181825 0%, #20202c 32%, #31313f 100%);
+  background: -ms-linear-gradient(top, #181825 0%, #20202c 32%, #31313f 100%);
+  background: linear-gradient(to bottom, #181825 0%, #20202c 32%, #31313f 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#181825', endColorstr='#31313f', GradientType=0 );
   .link-list {
     margin: 0;
     padding: 0;
     list-style-type: none;
-    text-align: center;
     .link-item {
       margin-bottom: 15px;
       &:last-child {
@@ -20,12 +26,25 @@
       .link-btn {
         color: $secondary_color;
         min-width: 50px;
-        font-size: 18px;
         outline: none;
         cursor: default;
+        padding: 5px 15px;
+        display: block;
+        text-decoration: none;
+        .icon {
+          font-size: 16px;
+          width: 15px;
+          margin-right: 15px;
+        }
       }
       .active {
         color: $text_color;
+      }
+      .link-name {
+        font-size: 13px;
+        font-weight: 400;
+        position: relative;
+        top: -1px;
       }
     }
   }
