@@ -1,6 +1,6 @@
-<div class="main-sidenav">
+<div [ngClass]="{ 'mac': os == 'mac', 'not-mac': os != 'mac' }" class="main-sidenav">
 
-  <div [ngClass]="{ 'mac': os == 'mac' }" class="scrollable-content">
+  <div class="scrollable-content">
 
     <div class="user-info-container">
       <div class="content">
@@ -56,6 +56,24 @@
           <span class="link-name">FEATURED</span></a>
       </li>
     </ul>
-</div>
+
+    <div class="queue-container">
+      <div class="header-container center-container">
+        <div class="queue-header-content center-content">
+          <div class="first-line line"></div>
+          <div class="title">QUEUE</div>
+          <div class="second-line line"></div>
+        </div>
+      </div>
+
+      <ul class="queue-list">
+        <li class="queue-item" *ngFor="let song of queue">
+          <h5 class="name">{{ song.name }}</h5>
+          <h6 class="artist">{{ song.artist }}</h6>
+        </li>
+      </ul>
+    </div>
+
+  </div>
 </div>
 

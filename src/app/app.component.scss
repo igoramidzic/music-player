@@ -21,6 +21,23 @@ $primary_font: 'Roboto', sans-serif;
   color: $text_color;
 }
 
+.center-container {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  height: auto;
+  .center-content {
+    align-items: center;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+  }
+}
+
 .drag-bar {
   -webkit-app-region: drag;
   position: fixed;

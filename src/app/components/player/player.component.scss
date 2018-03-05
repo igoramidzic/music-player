@@ -10,24 +10,8 @@
   .main-controls-container {
     color: $text_color; // Color
     background-color: rgba(36, 35, 50, 0.81);
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    height: auto;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
 
     .now-playing-bar {
-      align-items: center;
-      display: -ms-flexbox;
-      display: flex;
-      -ms-flex-direction: row;
-      flex-direction: row;
-      -ms-flex-pack: justify;
-      justify-content: space-between;
       height: $player_height;
       padding: 0 16px;
 

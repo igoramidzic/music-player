@@ -9,12 +9,19 @@ import {Ng2DeviceService} from 'ng2-device-detector';
 export class SidenavComponent implements OnInit {
 
   os: string;
+  queue: { name: String, artist: String}[];
 
   constructor(private deviceService: Ng2DeviceService) { }
 
   ngOnInit() {
     this.os = this.deviceService.os;
-    console.log(this.os);
+
+    this.queue = [
+      { name: 'Golden Sands', artist: 'Imagine Dragons' },
+      { name: 'Neon Sound', artist: 'AVICII' },
+      { name: 'Drop The Game', artist: 'Flume' },
+      { name: 'On Hold', artist: 'the XX' },
+    ]
   }
 
 }
