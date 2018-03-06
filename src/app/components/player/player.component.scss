@@ -9,7 +9,7 @@
 
   .main-controls-container {
     color: $text_color; // Color
-    background-color: rgba(36, 35, 50, 0.81);
+    background-color: $primary_color_transparent;
 
     .now-playing-bar {
       height: $player_height;

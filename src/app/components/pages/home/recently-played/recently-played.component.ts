@@ -1,20 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import {Ng2DeviceService} from 'ng2-device-detector';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  selector: 'app-recently-played',
+  templateUrl: './recently-played.component.html',
+  styleUrls: ['./recently-played.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class RecentlyPlayedComponent implements OnInit {
 
   recentlyPlayed: { name: String, artist: String, url: String }[];
-  os: string;
 
-  constructor(private deviceService: Ng2DeviceService) { }
+  constructor() { }
 
   ngOnInit() {
-    this.os = this.deviceService.os;
     this.recentlyPlayed = [
       { name: 'Golden Sands', artist: 'Imagine Dragons', url: 'evolve-album.jpg' },
       { name: 'Thunder', artist: 'Imagine Dragons', url: 'i-d-album.jpg' },

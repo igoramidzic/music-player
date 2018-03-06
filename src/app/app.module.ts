@@ -22,6 +22,10 @@ import { BrowseComponent } from './components/pages/browse/browse.component';
 import { RadioComponent } from './components/pages/radio/radio.component';
 import { PlaylistsComponent } from './components/pages/playlists/playlists.component';
 import { FeaturedComponent } from './components/pages/featured/featured.component';
+import { RecentlyPlayedComponent } from './components/pages/home/recently-played/recently-played.component';
+import { HeaderSongComponent } from './components/pages/home/header-song/header-song.component';
+import { FeaturedForYouComponent } from './components/pages/home/featured-for-you/featured-for-you.component';
+import { RecommendedAlbumsComponent } from './components/pages/home/recommended-albums/recommended-albums.component';
 
 
 @NgModule({
@@ -39,7 +43,11 @@ import { FeaturedComponent } from './components/pages/featured/featured.componen
     BrowseComponent,
     RadioComponent,
     PlaylistsComponent,
-    FeaturedComponent
+    FeaturedComponent,
+    RecentlyPlayedComponent,
+    HeaderSongComponent,
+    FeaturedForYouComponent,
+    RecommendedAlbumsComponent
   ],
   imports: [
     BrowserModule,

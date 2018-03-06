@@ -1,0 +1,57 @@
+@import '../../../../app.component.scss';
+@import '../home.component.scss';
+
+.next-song-container {
+  background: url("/assets/img/home-design1.png") no-repeat center top;
+  background-size: cover;
+  margin-bottom: 50px;
+
+  .wrapper {
+    position: relative;
+    padding: 140px 0 0 0;
+  }
+
+  .album-cover-container {
+    margin-right: 25px;
+    .album-img {
+      max-width: 75px;
+      max-height: 75px;
+    }
+  }
+  .song-info-container {
+    width: 100%;
+    .center-content {
+      align-items: flex-end;
+    }
+    .song-info {
+      .title {
+        color: $text_color;
+        font-weight: 300;
+        font-size: 18px;
+        margin: 0 0 6px 0;
+      }
+      .artist {
+        color: $secondary_color;
+        font-weight: 300;
+        font-size: 13px;
+        margin: 0;
+      }
+    }
+
+    .next-song-info {
+      text-align: right;
+      .header {
+        font-size: 11px;
+        font-weight: 300;
+        color: $secondary_color;
+        margin: 0;
+      }
+      .song {
+        font-size: 11px;
+        font-weight: 300;
+        color: $text_color;
+        margin: 0;
+      }
+    }
+  }
+}

@@ -1,5 +1,60 @@
 @import '../../../app.component.scss';
 
+.mac .scrollable-content {
+  &::-webkit-scrollbar {
+    display: none !important
+  }
+}
+
+.section-header {
+  font-size: 23px;
+  color: $text_color;
+  margin: 0 0 25px 0;
+  font-weight: 300;
+}
+
 .home-container {
   color: $text_color;
+  font-family: $primary_font;
+
+  .main-wrapper {
+    height: 100vh;
+    padding: 25px 0 90px 0;
+  }
+
+  .scrollable-content {
+    overflow-y: scroll;
+    height: 100%;
+    padding: 25px;
+    &::-webkit-scrollbar {
+      background-color: transparent;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: $primary_color;
+    }
+    &::-webkit-scrollbar-track {
+      background-color: transparent;
+    }
+    &::-webkit-scrollbar-button {
+      background-color: orange;
+      color: purple;
+      display: none;
+    }
+  }
+
+  .grid-container {
+    display: grid;
+    grid-template-columns: 5fr 2fr;
+    grid-gap: 25px;
+
+    .header-song-container {
+    }
+
+    .recently-listened-container {
+    }
+
+    .recommended-albums-container {
+      grid-column: 1/3;
+    }
+  }
 }

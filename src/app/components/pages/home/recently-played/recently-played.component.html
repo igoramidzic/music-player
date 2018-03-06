@@ -1,0 +1,16 @@
+<div class="recently-listened-container">
+  <h1 class="section-header">Recently Listened</h1>
+  <div class="recent-songs-container">
+    <ul class="recent-songs-list center-container">
+      <li class="recent-song center-content" *ngFor="let song of recentlyPlayed">
+        <div class="album-img">
+          <img class="img" src="assets/img/{{ song.url }}" alt="">
+        </div>
+        <div class="info">
+          <h5 class="title">{{ song.name }}</h5>
+          <h6 class="artist">{{ song.artist }}</h6>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
