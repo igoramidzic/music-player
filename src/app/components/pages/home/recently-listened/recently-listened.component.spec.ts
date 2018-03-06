@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RecentlyPlayedComponent } from './recently-played.component';
+import { RecentlyListenedComponent } from './recently-listened.component';
 
-describe('RecentlyPlayedComponent', () => {
-  let component: RecentlyPlayedComponent;
-  let fixture: ComponentFixture<RecentlyPlayedComponent>;
+describe('RecentlyListenedComponent', () => {
+  let component: RecentlyListenedComponent;
+  let fixture: ComponentFixture<RecentlyListenedComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RecentlyPlayedComponent ]
+      declarations: [ RecentlyListenedComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RecentlyPlayedComponent);
+    fixture = TestBed.createComponent(RecentlyListenedComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

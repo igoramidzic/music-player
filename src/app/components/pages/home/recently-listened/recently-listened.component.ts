@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-recently-played',
-  templateUrl: './recently-played.component.html',
-  styleUrls: ['./recently-played.component.scss']
+  selector: 'app-recently-listened',
+  templateUrl: './recently-listened.component.html',
+  styleUrls: ['./recently-listened.component.scss']
 })
-export class RecentlyPlayedComponent implements OnInit {
+export class RecentlyListenedComponent implements OnInit {
 
   recentlyPlayed: { name: String, artist: String, url: String }[];
 
