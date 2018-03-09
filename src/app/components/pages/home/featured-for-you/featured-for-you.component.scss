@@ -1,0 +1,96 @@
+@import '../../../../app.component.scss';
+@import '../home.component.scss';
+@import url('https://fonts.googleapis.com/css?family=Quicksand:300,400');
+
+.featured-for-you-container {
+  font-family: $primary_font;
+  .header-container {
+    width: 100%;
+    margin: 0 0 25px 0;
+    .center-content {
+      align-items: flex-end;
+      .mini-link {
+        text-decoration: none;
+        color: $accent_color;
+        font-size: 15px;
+        font-weight: 300;
+      }
+    }
+  }
+
+  .main-body-container {
+    background: #26b9c6;
+    background-position: right 0 center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    border-radius: 5px;
+    font-family: 'Quicksand', sans-serif;
+
+    .content-container {
+      padding: 50px;
+      border-radius: 5px;
+      .header {
+        margin: 0 0 5px 0;
+      }
+      .description {
+        margin: 0 0 10px 0;
+        font-size: 16px;
+        letter-spacing: 1px;
+        font-weight: 300;
+      }
+    }
+
+    .buy-tickets-container {
+      .fa-ticket-alt {
+        margin: 0 15px 0 0;
+        font-size: 23px;
+        position: relative;
+        top: 1px;
+      }
+      .description {
+        font-size: 11px;
+        font-weight: 300;
+        width: 100%;
+        margin: 0;
+        letter-spacing: 1px;
+      }
+    }
+  }
+
+}
+
+@media only screen and (min-width: 1101px)  {
+  .main-body-container {
+    .content-container {
+      background: -moz-linear-gradient(#26b9c6 0%, #26b9c6 52%, transparent 65%, transparent 100%);
+      background: -webkit-linear-gradient(#26b9c6 0%, #26b9c6 52%, transparent 65%, transparent 100%);
+      background: -o-linear-gradient(#26b9c6 0%, #26b9c6 52%, transparent 65%, transparent 100%);
+      background: -ms-linear-gradient(#26b9c6 0%, #26b9c6 52%, transparent 65%, transparent 100%);
+      background: linear-gradient(to right, #26b9c6 0%, #26b9c6 52%, transparent 65%, transparent 100%);
+    }
+  }
+}
+
+@media only screen and (max-width: 949px)  {
+  .main-body-container {
+    .content-container {
+      background: -moz-linear-gradient(#26b9c6 0%, #26b9c6 52%, transparent 65%, transparent 100%);
+      background: -webkit-linear-gradient(#26b9c6 0%, #26b9c6 52%, transparent 65%, transparent 100%);
+      background: -o-linear-gradient(#26b9c6 0%, #26b9c6 52%, transparent 65%, transparent 100%);
+      background: -ms-linear-gradient(#26b9c6 0%, #26b9c6 52%, transparent 65%, transparent 100%);
+      background: linear-gradient(to right, #26b9c6 0%, #26b9c6 52%, transparent 65%, transparent 100%);
+    }
+  }
+}
+
+@media only screen and (max-width: 1100px) and (min-width: 950px) {
+  .main-body-container {
+    .content-container {
+      background: -moz-linear-gradient(#26b9c6 0%, #26b9c6 52%, transparent 65%, transparent 100%);
+      background: -webkit-linear-gradient(#26b9c6 0%, #26b9c6 52%, transparent 65%, transparent 100%);
+      background: -o-linear-gradient(#26b9c6 0%, #26b9c6 52%, transparent 65%, transparent 100%);
+      background: -ms-linear-gradient(#26b9c6 0%, #26b9c6 52%, transparent 65%, transparent 100%);
+      background: linear-gradient(to right, #26b9c6 0%, #26b9c6 60%, transparent 80%, transparent 100%);
+    }
+  }
+}

@@ -9,7 +9,7 @@
 
   .main-controls-container {
     color: $text_color; // Color
-    background-color: rgba(36, 35, 50, 0.81);
+    background-color: $primary_color_transparent;
 
     .now-playing-bar {
       height: $player_height;
@@ -214,14 +214,14 @@
   }
 }
 
-@media only screen and (min-width: 1001px) {
+@media only screen and (min-width: 1101px) {
   .current-song-container {
     min-width: calc(250px - 16px);
     max-width: calc(250px - 16px);
   }
 }
 
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 1100px) {
   .current-song-container {
     min-width: calc(200px - 16px);
     max-width: calc(200px - 16px);

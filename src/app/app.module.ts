@@ -8,6 +8,8 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Ng2DeviceDetectorModule } from 'ng2-device-detector';
 
+import {AudioService} from './services/audio.service';
+
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
@@ -22,6 +24,10 @@ import { BrowseComponent } from './components/pages/browse/browse.component';
 import { RadioComponent } from './components/pages/radio/radio.component';
 import { PlaylistsComponent } from './components/pages/playlists/playlists.component';
 import { FeaturedComponent } from './components/pages/featured/featured.component';
+import { HeaderSongComponent } from './components/pages/home/header-song/header-song.component';
+import { FeaturedForYouComponent } from './components/pages/home/featured-for-you/featured-for-you.component';
+import { RecommendedAlbumsComponent } from './components/pages/home/recommended-albums/recommended-albums.component';
+import { RecentlyListenedComponent } from './components/pages/home/recently-listened/recently-listened.component';
 
 
 @NgModule({
@@ -39,7 +45,11 @@ import { FeaturedComponent } from './components/pages/featured/featured.componen
     BrowseComponent,
     RadioComponent,
     PlaylistsComponent,
-    FeaturedComponent
+    FeaturedComponent,
+    HeaderSongComponent,
+    FeaturedForYouComponent,
+    RecommendedAlbumsComponent,
+    RecentlyListenedComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +61,7 @@ import { FeaturedComponent } from './components/pages/featured/featured.componen
     ReactiveFormsModule,
     Ng2DeviceDetectorModule.forRoot()
   ],
-  providers: [],
+  providers: [AudioService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
