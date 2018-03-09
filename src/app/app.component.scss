@@ -17,6 +17,7 @@ $primary_font: 'Roboto', sans-serif;
 
 .main-content-container {
   height: 100vh;
+  min-width: 800px;
   background-color: $primary_color;
   font-family: $primary_font;
   color: $text_color;
@@ -52,13 +53,13 @@ $primary_font: 'Roboto', sans-serif;
   cursor: default;
 }
 
-@media only screen and (min-width: 1001px) {
+@media only screen and (min-width: 1101px) {
   .main-content-container {
     padding: 0 0 calc(90px) calc(250px);
   }
 }
 
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 1100px) {
   .main-content-container {
     padding: 0 0 calc(90px) calc(200px);
   }

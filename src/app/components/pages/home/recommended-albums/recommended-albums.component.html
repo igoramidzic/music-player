@@ -1,3 +1,20 @@
-<p>
-  recommended-albums works!
-</p>
+<div class="recommended-albums-container">
+  <div class="header-container center-container">
+    <div class="center-content">
+      <div><h5 class="section-header">Recommended Albums</h5></div>
+      <div><a [routerLink]="['browse']" class="mini-link">Browse</a></div>
+    </div>
+  </div>
+
+  <div class="albums-container">
+    <ul class="album-list center-container">
+      <li class="album-content" *ngFor="let album of recommendedAlbums">
+        <img class="album-img" src="assets/img/{{ album.url }}" alt="">
+        <div class="album-info">
+          <h5 class="name">{{ album.name }}</h5>
+          <h6 class="artist">{{ album.artist }}</h6>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

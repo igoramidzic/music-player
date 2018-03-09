@@ -8,6 +8,8 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Ng2DeviceDetectorModule } from 'ng2-device-detector';
 
+import {AudioService} from './services/audio.service';
+
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
@@ -59,7 +61,7 @@ import { RecentlyListenedComponent } from './components/pages/home/recently-list
     ReactiveFormsModule,
     Ng2DeviceDetectorModule.forRoot()
   ],
-  providers: [],
+  providers: [AudioService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
