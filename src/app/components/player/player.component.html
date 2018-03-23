@@ -5,17 +5,15 @@
       <div class="bar-content-container current-song-container">
         <div class="content">
           <div class="album-img-container">
-            <img src="assets/img/evolve-album.jpg" alt="" class="pro-pic">
+            <!--<img src="assets/img/{{ currentSong?.albumCoverUrl }}" alt="" class="pro-pic">-->
           </div>
           <div class="info-container">
             <div class="shadow-box"></div>
-            <div class="name">Walking the wire</div>
-            <div class="artist">Imagine Dragons</div>
+            <div class="name">{{ currentSong?.name || 'None' }}</div>
+            <div class="artist">{{ currentSong?.artist || 'None' }}</div>
           </div>
         </div>
       </div>
-
-      <!-- -->
 
       <div class="prev-next-container bar-content-container now-playing-bar__left">
         <h4 class="title">PREVIOUS</h4>
@@ -27,22 +25,26 @@
           <div class="player-controls__buttons">
             <button class="player-btn" (click)="onFavorite()"><i class="far fa-heart"></i></button>
             <button class="player-btn" (click)="onSeekBack()"><i class="fas fa-step-backward"></i></button>
-            <button class="player-btn play-pause-btn" (click)="onTogglePlay()">
-              <span *ngIf="!playing"><i class="fas fa-play"></i></span>
-              <span *ngIf="playing"><i class="fas fa-pause"></i></span>
+            <button class="player-btn play-pause-btn" (click)="onToggleAudio()">
+              <span *ngIf="audioService.audio.paused"><i class="fas fa-play"></i></span>
+              <span *ngIf="!audioService.audio.paused"><i class="fas fa-pause"></i></span>
             </button>
             <button class="player-btn" (click)="onSeekForward()"><i class="fas fa-step-forward"></i></button>
             <button class="player-btn" (click)="onToggleShuffle()"><i class="fas fa-random"></i></button>
           </div>
 
           <div class="playback-bar">
-            <div class="playback-bar__progress-time">{{ audioProgress | time }}</div>
+            <div class="playback-bar__progress-time">{{ audioService.audio.currentTime | time }}</div>
             <div style="width: 100%">
               <div class="progress-bar-hello">
-                <mat-slider [max]="audioLength" [(ngModel)]="audioProgress" class="progress-bar__bg"></mat-slider>
+                <mat-slider [max]="audioService.audio?.duration"
+                            [(ngModel)]="audioService.audio.currentTime"
+                            class="progress-bar__bg"></mat-slider>
               </div>
             </div>
-            <div class="playback-bar__progress-time">{{ audioLength - audioProgress | time }}</div>
+            <div class="playback-bar__progress-time">
+              {{ audioService.audio.duration - audioService.audio.currentTime || 0 | time }}
+            </div>
           </div>
         </div>
       </div>
@@ -54,3 +56,4 @@
     </div>
   </div>
 </footer>
+

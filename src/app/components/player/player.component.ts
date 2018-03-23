@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {AudioService} from '../../services/audio.service';
 
 @Component({
@@ -8,28 +8,15 @@ import {AudioService} from '../../services/audio.service';
 })
 export class PlayerComponent implements OnInit {
 
-  audioLength: number;
-  audioProgress: number;
-  playing: boolean;
-  currentSong: string;
-
   constructor(private audioService: AudioService) { }
 
   ngOnInit() {
-    this.audioLength = 194;
-    this.audioProgress = 0;
-    this.playing = false;
-
-    this.currentSong = this.audioService.currentSong;
-
-    this.audioService.currentSong$.subscribe(song => {
-      console.log(song);
-    })
-
+    setInterval(() => {
+    }, 500);
   }
 
-  onTogglePlay () {
-    this.playing = !this.playing;
+  onToggleAudio () {
+    this.audioService.toggleAudio();
   }
 
   onSeekBack () {
@@ -38,7 +25,6 @@ export class PlayerComponent implements OnInit {
 
   onSeekForward () {
     // ..
-    this.audioService.nextSong();
   }
 
   onFavorite () {

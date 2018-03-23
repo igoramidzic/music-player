@@ -5,32 +5,42 @@ import {Subject} from 'rxjs/Subject';
 @Injectable()
 export class AudioService {
 
-  songs: Song[];
-  currentSong: string = 'Hello, brother';
-  currentSong$: Subject = new Subject();
+  audio = new Audio();
 
   constructor() {
-    this.songs = [
-      { name: 'Golden Sands', artist: 'Imagine Dragons', albumCoverUrl: 'evolve-album.jpg', audioUrl: '' },
-      { name: 'Thunder', artist: 'Imagine Dragons', albumCoverUrl: 'i-d-album.jpg', audioUrl: '' },
-      { name: 'Tragic Endings', artist: 'Eminem', albumCoverUrl: 'revival.png', audioUrl: '' },
-      { name: 'Until You Were Gone', artist: 'The Chainsmokers', albumCoverUrl: 't-c-album.jpg', audioUrl: '' },
-      { name: 'The Incredible True Story', artist: 'Logic', albumCoverUrl: 'logic.jpg', audioUrl: '' },
-      { name: 'Believer', artist: 'Imagine Dragons', albumCoverUrl: 'i-d-album-2.jpg', audioUrl: '' }
-    ];
+    // this.songs = [
+    //   { name: 'Golden Sands', artist: 'Imagine Dragons', albumCoverUrl: 'evolve-album.jpg', audioSrc: 'assets/songs/city-of-stars.mp3' },
+    //   { name: 'Thunder', artist: 'Imagine Dragons', albumCoverUrl: 'i-d-album.jpg', audioSrc: 'assets/songs/walking-the-wire.mp3' },
+    //   { name: 'Tragic Endings', artist: 'Eminem', albumCoverUrl: 'revival.png', audioSrc: 'assets/songs/city-of-stars.mp3' },
+    //   { name: 'Until You Were Gone', artist: 'The Chainsmokers', albumCoverUrl: 't-c-album.jpg', audioSrc: 'assets/songs/walking-the-wire.mp3' },
+    //   { name: 'City of Stars', artist: 'Logic', albumCoverUrl: 'logic.jpg', audioSrc: 'assets/songs/city-of-stars.mp3' },
+    //   { name: 'Walking The Wire', artist: 'Imagine Dragons', albumCoverUrl: 'i-d-album-2.jpg', audioSrc: 'assets/songs/walking-the-wire.mp3' }
+    // ];
 
-    this.currentSong$.next('Hello world!');
+    this.audio.src = 'assets/songs/city-of-stars.mp3';
+    this.audio.load();
+  }
+
+  toggleAudio () {
+    if (this.audio.paused)
+        return this.play();
+    return this.pause();
+  }
+
+  play () {
+    this.audio.play();
+  }
+
+  pause () {
+    this.audio.pause();
   }
 
   nextSong () {
-    this.currentSong$.next('Next');
+    // ..
   }
 
-}
+  previousSong () {
+    // ..
+  }
 
-interface Song {
-  name: string,
-  artist: string,
-  albumCoverUrl: string,
-  audioUrl: string
 }

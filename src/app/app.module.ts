@@ -7,8 +7,16 @@ import {MatSliderModule} from '@angular/material/slider';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Ng2DeviceDetectorModule } from 'ng2-device-detector';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { HttpClientModule } from '@angular/common/http';
+import { NgPipesModule } from 'ngx-pipes';
+import {environment} from '../environments/environment';
 
 import {AudioService} from './services/audio.service';
+import {AuthService} from './services/auth.service';
+import {CookieService} from 'angular2-cookie/core';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -29,7 +37,6 @@ import { FeaturedForYouComponent } from './components/pages/home/featured-for-yo
 import { RecommendedAlbumsComponent } from './components/pages/home/recommended-albums/recommended-albums.component';
 import { RecentlyListenedComponent } from './components/pages/home/recently-listened/recently-listened.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,7 +56,7 @@ import { RecentlyListenedComponent } from './components/pages/home/recently-list
     HeaderSongComponent,
     FeaturedForYouComponent,
     RecommendedAlbumsComponent,
-    RecentlyListenedComponent
+    RecentlyListenedComponent,
   ],
   imports: [
     BrowserModule,
@@ -59,9 +66,14 @@ import { RecentlyListenedComponent } from './components/pages/home/recently-list
     MatSliderModule,
     FormsModule,
     ReactiveFormsModule,
-    Ng2DeviceDetectorModule.forRoot()
+    Ng2DeviceDetectorModule.forRoot(),
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
+    AngularFireAuthModule,
+    HttpClientModule,
+    NgPipesModule
   ],
-  providers: [AudioService],
+  providers: [AudioService, AuthService, CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
