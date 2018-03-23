@@ -23,6 +23,7 @@
     overflow-y: scroll;
     height: 100%;
     padding: 25px 5px 25px 0;
+    position: relative;
     &::-webkit-scrollbar {
       background-color: transparent;
     }
@@ -39,6 +40,32 @@
     }
   }
 
+  .signup-login-container {
+    margin-bottom: 40px;
+    .auth-btn {
+      cursor: default;
+      color: purple;
+      outline: none;
+      text-decoration: none;
+      font-size: 13px;
+      min-width: 75px;
+      max-width: 75px;
+      font-family: $primary_font;
+      letter-spacing: 1px;
+      font-weight: 300;
+      padding: 0;
+    }
+    .signup {
+      background-color: $primary_color_dark;
+      border: 1px solid $primary_color_dark;
+      color: $text_color;
+      margin-right: 10px;
+    }
+    .login {
+      color: $accent_color;
+      border: 1px solid $accent_color
+    }
+  }
 
   .user-info-container {
     margin-bottom: 40px;
@@ -61,21 +88,26 @@
       justify-content: space-between;
 
       .profile-image-container {
-        width: 50%;
+        width: 60px;
+        min-width: 60px;
         .pro-pic {
+          outline: none;
+          height: 60px;
           max-width: 100%;
           border-radius: 500px;
         }
       }
 
       .info-container {
-        width: 50%;
+        width: 100%;
         color: $text_color;
         overflow: hidden;
         .name {
           display: block;
+          outline: none;
         }
         .chip__small {
+          outline: none;
           border: 1px solid $accent_color;
           border-radius: 3px;
           padding: 2px 4px;
@@ -172,12 +204,48 @@
       }
     }
   }
+
+  .progress-bar-hello {
+    width: 100%;
+    .icon-container {
+      width: 25px;
+      font-size: 15px;
+      color: $secondary_color;
+      position: relative;
+      top: 1px;
+    }
+
+    .volume-bar-container {
+      width: 100%;
+      .progress-bar__bg {
+        display: -ms-flexbox;
+        display: flex;
+      }
+      .mat-slider-horizontal {
+        padding: 0;
+        .mat-slider-wrapper {
+          margin-bottom: 100px;
+        }
+      }
+    }
+  }
+
+  .shadow-box-bottom {
+    position: absolute;
+    left: 0;
+    bottom: calc(90px + 48px);
+    height: 50px;
+    width: 100%;
+    -webkit-box-shadow: inset -35px 0px 29px -19px #24242f;
+    -moz-box-shadow: inset -35px 0px 29px -19px #24242f;
+    box-shadow: inset 0px -25px 29px -19px #24242f;
+  }
 }
 
 @media only screen and (min-width: 1101px) {
   .main-sidenav {
     width: 250px;
-    padding: 25px 25px 90px 40px;
+    padding: 25px 25px calc(90px + 48px) 40px;
   }
 
   .not-mac {
@@ -185,7 +253,7 @@
   }
 
   .profile-image-container {
-    padding: 0 20px 0 0;
+    margin: 0 20px 0 0;
   }
 
   .name {
@@ -212,7 +280,7 @@
   }
 
   .profile-image-container {
-    padding: 0 15px 0 0;
+    margin: 0 15px 0 0;
   }
 
   .name {
