@@ -11,8 +11,6 @@ export class PlayerComponent implements OnInit {
   constructor(private audioService: AudioService) { }
 
   ngOnInit() {
-    setInterval(() => {
-    }, 500);
   }
 
   onToggleAudio () {

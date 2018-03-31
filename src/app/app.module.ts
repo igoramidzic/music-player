@@ -17,6 +17,7 @@ import {environment} from '../environments/environment';
 import {AudioService} from './services/audio.service';
 import {AuthService} from './services/auth.service';
 import {CookieService} from 'angular2-cookie/core';
+import {PlaybackSdkService} from './services/playback-sdk.service';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -73,7 +74,7 @@ import { RecentlyListenedComponent } from './components/pages/home/recently-list
     HttpClientModule,
     NgPipesModule
   ],
-  providers: [AudioService, AuthService, CookieService],
+  providers: [AudioService, AuthService, CookieService, PlaybackSdkService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
