@@ -4,7 +4,6 @@ import {ActivatedRoute, Router} from '@angular/router';
 import { CookieService } from 'angular2-cookie/services/cookies.service';
 import 'query-string';
 
-
 @Injectable()
 export class AuthService {
 
@@ -14,7 +13,6 @@ export class AuthService {
               private cookieService: CookieService,
               private route: ActivatedRoute) {
 
-    console.log(this.cookieService.get('access_token'))
     if (this.cookieService.get('access_token')) {
       this.getUserData(this.cookieService.get('access_token'));
     }

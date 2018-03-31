@@ -25,7 +25,7 @@
           <div class="player-controls__buttons">
             <button class="player-btn" (click)="onFavorite()"><i class="far fa-heart"></i></button>
             <button class="player-btn" (click)="onSeekBack()"><i class="fas fa-step-backward"></i></button>
-            <button class="player-btn play-pause-btn" (click)="onToggleAudio()">
+            <button class="player-btn play-pause-btn" onclick="resumeSong()">
               <span *ngIf="audioService.audio.paused"><i class="fas fa-play"></i></span>
               <span *ngIf="!audioService.audio.paused"><i class="fas fa-pause"></i></span>
             </button>
@@ -56,4 +56,3 @@
     </div>
   </div>
 </footer>
-

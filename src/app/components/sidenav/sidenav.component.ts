@@ -35,7 +35,6 @@ export class SidenavComponent implements OnInit {
       { name: 'Drop The Game', artist: 'Flume' },
       { name: 'On Hold', artist: 'the XX' },
     ]
-    console.log('BQD5eEQPsDN8m4S8Xu0bTZTiWWI606U0B7FhW3Av4Bn0ElYsN2k-YKOL1l92YvvfxIvum_dDo0bFtSLU74QYAHf9iu3cwaHOP-EI-_G-as1R2xJRFSG4XnzODsWBupjtsoxxoW36jkPZnxPMwREThLNdsaegiCq0Yi89N4D4dUXucFkIfgbqcLlXNxXD45t4I7LyJ21oVWvprwVyUcXmFUqX7BkRW4DplvnQeM42-RdP-tn-Iw4o-jSDrOBl9b9Zjm9PTuwO1ddO'.length)
   }
 
   onSignup () {
