@@ -3,7 +3,7 @@
   <div class="scrollable-content">
     <div class="signup-login-container" *ngIf="!authService.user">
         <a mat-button class="auth-btn signup" href="https://www.spotify.com/us/signup/">Signup</a>
-        <a mat-button class="auth-btn login" (click)="onLogin()">Login</a>
+        <a href="/api/login" mat-button class="auth-btn login">Login</a>
     </div>
 
     <div class="user-info-container" *ngIf="authService.user">
@@ -14,11 +14,11 @@
         <div class="info-container">
           <span [routerLink]="['settings']" class="name">{{ authService.user.display_name || authService.user.email | shorten: 9: '...' }}</span>
           <span [routerLink]="['settings']" class="chip__small">{{ authService.user.product | ucfirst }}</span>
-          <button mat-button (click)="onLogout()">Logout</button>
-
         </div>
       </div>
     </div>
+
+    {{ display_name }}
 
     <ul class="link-list">
       <li class="link-item">
