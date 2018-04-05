@@ -40,7 +40,7 @@
     "ngx-pipes": "^2.1.2",
     "npm": "^5.7.1",
     "os": "^0.1.1",
-    "productName": "Music Player",
+    "productName": "Music_Player",
     "query-string": "^6.0.0",
     "request": "^2.85.0",
     "rxjs": "^5.5.6",
