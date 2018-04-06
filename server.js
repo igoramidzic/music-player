@@ -1,12 +1,13 @@
 let express = require('express'); // Express web server framework
 let request = require('request'); // "Request" library
 let querystring = require('querystring');
+require('dotenv').config();
 
-let client_id = 'a588c1b7c268458f8894cc0c64c0539a'; // Your client id
-let client_secret = 'ac7422aa85dc41a09b4fab5418ee079c'; // Your secret
-let redirect_uri = 'http://localhost:3000/api/callback'; // Your redirect uri
+let client_id = process.env.CLIENT_ID; // Your client id
+let client_secret = process.env.CLIENT_SECRET; // Your secret
+let redirect_uri = process.env.REDIRECT_URI; // Your redirect uri
 
-let port = process.env.PORT || 3000;
+let port = process.env.PORT;
 
 let app = express();
 
