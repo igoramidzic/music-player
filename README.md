@@ -1,27 +1,60 @@
 # MusicPlayer
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.7.
+A simple music player web application using Spotify API.
 
-## Development server
+## My progress
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+#### Done:
+    - Created home page.
+    - Connected Spotify API.
+    - Authenticate user with Spotify & pull user data.
 
-## Code scaffolding
+#### In Progress:
+    - Connect Spotify PlaybackSDK to allow user to play music from his or her Spotify account, or control music on other apps
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Install
 
-## Build
+`npm install`
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
 
-## Running unit tests
+## Spotify Developer Credentials
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Add Spotify developer credentials to the express server
 
-## Running end-to-end tests
+#### option 1 (recommended)
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+1. create a `.env` file in root folder
+2. add:
+    ```
+    REDIRECT_URI="http://localhost:3000/api/callback"
+    CLIENT_ID="your_spotify_client_id"
+    CLIENT_SECRET="your_spotify_client_secred"
+    PORT=3000
+    ```
+  
+### OR
 
-## Further help
+#### option 2
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+1. Add client_id & client_secret in `/server.js`
+2. update:
+    ```
+    let client_id = process.env.CLIENT_ID || 'your_spotify_client_id'; // Your client id
+    let client_secret = process.env.CLIENT_SECRET || 'your_spotify_client_secred'; // Your secret
+    let redirect_uri = process.env.REDIRECT_URI || 'http://localhost:3000/callback'; // Your redirect uri
+    ```
+
+
+## Spotify Developer Redirect URIs
+
+You must add the `redirect_uri` url to your Spotify Developer Application settings
+
+1. https://beta.developer.spotify.com/dashboard/applications
+2. Choose your application
+3. Edit settings
+4. Under Redirect URIs, add your `redirect_uri` from /server.js or .env
+
+   
+## Run server
+
+`node server`
