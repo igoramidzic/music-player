@@ -1,0 +1,98 @@
+<div [ngClass]="{ 'mac': os == 'mac', 'not-mac': os != 'mac' }" class="main-sidenav">
+
+  <div class="scrollable-content">
+    <div class="signup-login-container" *ngIf="!authService.user">
+        <a mat-button class="auth-btn signup" href="https://www.spotify.com/us/signup/">Signup</a>
+        <a href="/api/login" mat-button class="auth-btn login">Login</a>
+    </div>
+
+    <div class="user-info-container" *ngIf="authService.user">
+      <div class="content">
+        <div class="profile-image-container">
+          <img [routerLink]="['settings']" [src]="authService.user.images[0].url" alt="" class="pro-pic">
+        </div>
+        <div class="info-container">
+          <span [routerLink]="['settings']" class="name">{{ authService.user.display_name || authService.user.email | shorten: 9: '...' }}</span>
+          <span [routerLink]="['settings']" class="chip__small">{{ authService.user.product | ucfirst }}</span>
+        </div>
+      </div>
+    </div>
+
+    {{ display_name }}
+
+    <ul class="link-list">
+      <li class="link-item">
+        <a
+          [routerLink]="['/']"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{exact: true}"
+          class="link-btn"><i class="icon fas fa-home"></i>
+          <span class="link-name">YOUR ZONE</span></a>
+      </li>
+      <li class="link-item">
+        <a
+          [routerLink]="['browse']"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{exact: true}"
+          class="link-btn"><i class="icon fas fa-folder"></i>
+          <span class="link-name">BROWSE</span></a>
+      </li>
+      <li class="link-item">
+        <a
+          [routerLink]="['radio']"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{exact: true}"
+          class="link-btn"><i class="icon fab fa-mixcloud"></i>
+          <span class="link-name">RADIO</span></a>
+      </li>
+      <li class="link-item">
+        <a
+          [routerLink]="['playlists']"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{exact: true}"
+          class="link-btn"><i class="icon fas fa-list"></i>
+          <span class="link-name">PLAYLISTS</span></a>
+      </li>
+      <li class="link-item">
+        <a
+          [routerLink]="['featured']"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{exact: true}"
+          class="link-btn"><i class="icon fas fa-star"></i>
+          <span class="link-name">FEATURED</span></a>
+      </li>
+    </ul>
+
+    <div class="queue-container">
+      <div class="header-container center-container">
+        <div class="queue-header-content center-content">
+          <div class="first-line line"></div>
+          <div class="title">QUEUE</div>
+          <div class="second-line line"></div>
+        </div>
+      </div>
+
+      <ul class="queue-list">
+        <li class="queue-item" *ngFor="let song of queue">
+          <h5 class="name">{{ song.name }}</h5>
+          <h6 class="artist">{{ song.artist }}</h6>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+  <div class="shadow-box-bottom"></div>
+  <div class="progress-bar-hello center-container">
+    <div class="center-content">
+      <div class="icon-container">
+        <i class="fas fa-volume-up"></i>
+      </div>
+      <div class="volume-bar-container">
+        <mat-slider max="1" step="0.01" [(ngModel)]="audioService.audio.volume"
+                    class="progress-bar__bg"></mat-slider>
+      </div>
+    </div>
+
+  </div>
+</div>
+

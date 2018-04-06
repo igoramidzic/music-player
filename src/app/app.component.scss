@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700');
+
+// Colors
+$primary_color: #191926;
+$primary_color_dark: #242740;
+$primary_color_light: #30303E;
+$primary_color_transparent: rgba(#242332, 0.81);
+$secondary_color: #6D6F8E;
+$accent_color: #6FCBFA;
+$text_color: #DBDBDD;
+
+// Widths & Heights
+$player_height: 90px;
+
+// Fonts
+$primary_font: 'Roboto', sans-serif;
+
+.main-content-container {
+  height: 100vh;
+  min-width: 800px;
+  background-color: $primary_color;
+  font-family: $primary_font;
+  color: $text_color;
+}
+
+.center-container {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  height: auto;
+  .center-content {
+    align-items: center;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+  }
+}
+
+.drag-bar {
+  -webkit-app-region: drag;
+  position: fixed;
+  height: 50px;
+  width: 100%;
+  z-index: 999;
+}
+
+* {
+  -webkit-user-select: none;
+  cursor: default;
+}
+
+@media only screen and (min-width: 1101px) {
+  .main-content-container {
+    padding: 0 0 calc(90px) calc(250px);
+  }
+}
+
+@media only screen and (max-width: 1100px) {
+  .main-content-container {
+    padding: 0 0 calc(90px) calc(200px);
+  }
+}
