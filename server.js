@@ -3,11 +3,11 @@ let request = require('request'); // "Request" library
 let querystring = require('querystring');
 require('dotenv').config();
 
-let client_id = process.env.CLIENT_ID; // Your client id
-let client_secret = process.env.CLIENT_SECRET; // Your secret
-let redirect_uri = process.env.REDIRECT_URI; // Your redirect uri
+let client_id = process.env.CLIENT_ID || '1234abcd'; // Your client id
+let client_secret = process.env.CLIENT_SECRET || '1234abcd'; // Your secret
+let redirect_uri = process.env.REDIRECT_URI || 'http://localhost:3000/callback'; // Your redirect uri
 
-let port = process.env.PORT;
+let port = process.env.PORT || '3000';
 
 let app = express();
 
