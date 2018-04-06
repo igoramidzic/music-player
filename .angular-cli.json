@@ -1,7 +1,7 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "project": {
-    "name": "music-player"
+    "name": "musicplayer"
   },
   "apps": [
     {
