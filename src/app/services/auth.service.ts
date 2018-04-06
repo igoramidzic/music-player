@@ -30,11 +30,12 @@ export class AuthService {
       this.user = user;
       this.user.access_token = userCredentials.access_token;
       this.user.refresh_token = userCredentials.refresh_token;
-      this.router.navigate([''])
+      this.router.navigate(['']);
     })
   }
 
 
+  // Not yet implemented
   getNewAccessToken () {
     this.http.get('/refresh_token?refresh_token=' + this.user.refresh_token)
       .subscribe((res: Res) => {
