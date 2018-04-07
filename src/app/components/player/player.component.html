@@ -26,24 +26,24 @@
             <button class="player-btn" (click)="onFavorite()"><i class="far fa-heart"></i></button>
             <button class="player-btn" (click)="onSeekBack()"><i class="fas fa-step-backward"></i></button>
             <button class="player-btn play-pause-btn" onclick="resumeSong()">
-              <span *ngIf="audioService.audio.paused"><i class="fas fa-play"></i></span>
-              <span *ngIf="!audioService.audio.paused"><i class="fas fa-pause"></i></span>
+              <span *ngIf="false"><i class="fas fa-play"></i></span>
+              <span *ngIf="true"><i class="fas fa-pause"></i></span>
             </button>
             <button class="player-btn" (click)="onSeekForward()"><i class="fas fa-step-forward"></i></button>
             <button class="player-btn" (click)="onToggleShuffle()"><i class="fas fa-random"></i></button>
           </div>
 
           <div class="playback-bar">
-            <div class="playback-bar__progress-time">{{ audioService.audio.currentTime | time }}</div>
+            <div class="playback-bar__progress-time">{{  0 | time }}</div>
             <div style="width: 100%">
               <div class="progress-bar-hello">
-                <mat-slider [max]="audioService.audio?.duration"
-                            [(ngModel)]="audioService.audio.currentTime"
+                <mat-slider [max]="1"
+                            value="1"
                             class="progress-bar__bg"></mat-slider>
               </div>
             </div>
             <div class="playback-bar__progress-time">
-              {{ audioService.audio.duration - audioService.audio.currentTime || 0 | time }}
+              {{  0 | time }}
             </div>
           </div>
         </div>

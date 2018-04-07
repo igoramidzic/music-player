@@ -37,6 +37,7 @@ import { HeaderSongComponent } from './components/pages/home/header-song/header-
 import { FeaturedForYouComponent } from './components/pages/home/featured-for-you/featured-for-you.component';
 import { RecommendedAlbumsComponent } from './components/pages/home/recommended-albums/recommended-albums.component';
 import { RecentlyListenedComponent } from './components/pages/home/recently-listened/recently-listened.component';
+import { BetaTagComponent } from './components/beta-tag/beta-tag.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { RecentlyListenedComponent } from './components/pages/home/recently-list
     FeaturedForYouComponent,
     RecommendedAlbumsComponent,
     RecentlyListenedComponent,
+    BetaTagComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,15 @@
+@import '../../app.component.scss';
+
+.beta-tag-container {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: darken($accent_color, 40%);
+  padding: 4px 30px 2px;
+  font-family: $primary_font;
+  color: $text_color;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  z-index: 999;
+}
