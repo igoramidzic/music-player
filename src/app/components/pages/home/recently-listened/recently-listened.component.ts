@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {RecentlyListenedItem} from '../../../../models/recently-listened-item';
+import {RecentlyListenedService} from '../../../../services/recently-listened.service';
 
 @Component({
   selector: 'app-recently-listened',
@@ -7,19 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RecentlyListenedComponent implements OnInit {
 
-  recentlyPlayed: { name: String, artist: String, url: String }[];
+  recentlyListenedItems: RecentlyListenedItem[];
 
-  constructor() { }
+  constructor(private recentlyListenedService: RecentlyListenedService) { }
 
   ngOnInit() {
-    this.recentlyPlayed = [
-      { name: 'Golden Sands', artist: 'Imagine Dragons', url: 'evolve-album.jpg' },
-      { name: 'Thunder', artist: 'Imagine Dragons', url: 'i-d-album.jpg' },
-      { name: 'Tragic Endings', artist: 'Eminem', url: 'revival.png' },
-      { name: 'Until You Were Gone', artist: 'The Chainsmokers', url: 't-c-album.jpg' },
-      { name: 'The Incredible True Story', artist: 'Logic', url: 'logic.jpg' },
-      { name: 'Believer', artist: 'Imagine Dragons', url: 'i-d-album-2.jpg' }
-    ]
+    this.recentlyListenedService.getRecentlyPlayedList()
+      .subscribe((res: {items}) => {
+        this.recentlyListenedItems = res.items.map(value => {
+          return {
+            imgURL: value.track.album.images[0].url,
+            name: value.track.name,
+            artist: value.track.artists[0].name
+          };
+        });
+      })
   }
 
 }

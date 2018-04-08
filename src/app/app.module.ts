@@ -38,6 +38,9 @@ import { FeaturedForYouComponent } from './components/pages/home/featured-for-yo
 import { RecommendedAlbumsComponent } from './components/pages/home/recommended-albums/recommended-albums.component';
 import { RecentlyListenedComponent } from './components/pages/home/recently-listened/recently-listened.component';
 import { BetaTagComponent } from './components/beta-tag/beta-tag.component';
+import { MainApplicationComponent } from './components/main-application/main-application.component';
+import { SafePipe } from './pipes/safe.pipe';
+import {RecentlyListenedService} from './services/recently-listened.service';
 
 @NgModule({
   declarations: [
@@ -60,6 +63,8 @@ import { BetaTagComponent } from './components/beta-tag/beta-tag.component';
     RecommendedAlbumsComponent,
     RecentlyListenedComponent,
     BetaTagComponent,
+    MainApplicationComponent,
+    SafePipe,
   ],
   imports: [
     BrowserModule,
@@ -76,7 +81,7 @@ import { BetaTagComponent } from './components/beta-tag/beta-tag.component';
     HttpClientModule,
     NgPipesModule
   ],
-  providers: [AudioService, AuthService, CookieService, PlaybackSdkService],
+  providers: [AudioService, AuthService, CookieService, PlaybackSdkService, RecentlyListenedService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
