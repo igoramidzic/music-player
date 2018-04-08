@@ -21,17 +21,16 @@ export class PlaybackSdkService {
   constructor(private http: HttpClient, private authService: AuthService, private zone: NgZone) {
     window.player;
     window.onSpotifyWebPlaybackSDKReady = () => {
-      console.log(this.authService.user);
       if (this.authService.user) {
         window.player = new window.Spotify.Player({
           name: 'Music Player Web App',
           getOAuthToken: callback => {
-            // Run code to get a fresh access token
-            this.authService.getNewAccessToken().subscribe((res: {access_token}) => {
-              callback(res.access_token);
-            });
+            // // Run code to get a fresh access token
+            // this.authService.getNewAccessToken().subscribe((res: {access_token}) => {
+            //   callback(res.access_token);
+            // });
             // For development - so you can develop in NG cli instead of express server
-            // callback(this.authService.user.access_token);
+            callback(this.authService.user.access_token);
           },
           volume: 1
         });
@@ -68,6 +67,14 @@ export class PlaybackSdkService {
 
   favoriteTrack () {
 
+  }
+
+  seekToPosition (position_ms) {
+    return this.http.put('https://api.spotify.com/v1/me/player/seek?position_ms=' + position_ms, {}, {
+      headers: new HttpHeaders({
+        'Authorization': 'Bearer ' + this.authService.user.access_token
+      })
+    });
   }
 
   getPlayerState(): Observable<any> {

@@ -1,6 +1,6 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {AudioService} from '../../services/audio.service';
+import {Component, OnInit} from '@angular/core';
 import {PlaybackSdkService} from '../../services/playback-sdk.service';
+import {SimpleTimer} from 'ng2-simple-timer';
 
 @Component({
   selector: 'app-player',
@@ -10,15 +10,38 @@ import {PlaybackSdkService} from '../../services/playback-sdk.service';
 export class PlayerComponent implements OnInit {
 
   playerState: any;
+  currentPosition: number = 0;
+  currentSliderPosition: number;
+  playing: boolean = false;
+  timer;
 
-  constructor(private playbackSDKService: PlaybackSdkService) {
+  constructor(private playbackSDKService: PlaybackSdkService, private st: SimpleTimer) { }
+
+  ngOnInit() {
+    this.st.newTimer('1sec',1);
     this.playbackSDKService.getPlayerState().subscribe(state => {
       this.playerState = state;
-      console.log(this.playerState);
+      this.currentPosition = this.playerState.position;
+      this.toggleTimer();
     });
   }
 
-  ngOnInit() {
+  toggleTimer () {
+    if (this.playerState.paused) {
+      this.playing = false;
+      this.st.unsubscribe(this.timer);
+    } else {
+      if (!this.playing) {
+        this.playing = true;
+        let firstFrame;
+        this.timer = this.st.subscribe('1sec', () => {
+          if (firstFrame) {
+            this.currentPosition += 1000;
+          }
+          firstFrame = true;
+        });
+      }
+    }
   }
 
   onTogglePlayback () {
@@ -31,6 +54,11 @@ export class PlayerComponent implements OnInit {
 
   onPreviousTrack () {
     this.playbackSDKService.previousTrack();
+  }
+
+  onSeekPositionOnCurrentTrack (position_md) {
+    this.playbackSDKService.seekToPosition(position_md)
+      .subscribe();
   }
 
   onFavorite () {
