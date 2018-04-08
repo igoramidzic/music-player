@@ -1,18 +1,18 @@
 <div class="recommended-albums-container">
   <div class="header-container center-container">
     <div class="center-content">
-      <div><h5 class="section-header">Recommended Albums</h5></div>
+      <div><h5 class="section-header">Recommended Artists</h5></div>
       <div><a [routerLink]="['browse']" class="mini-link">Browse</a></div>
     </div>
   </div>
 
   <div class="albums-container">
     <ul class="album-list center-container">
-      <li class="album-content" *ngFor="let album of recommendedAlbums">
-        <img class="album-img" src="assets/img/{{ album.url }}" alt="">
+      <li class="album-content" *ngFor="let artist of topArtistsList">
+        <img class="album-img" src="{{ artist.images[0].url }}" alt="">
         <div class="album-info">
-          <h5 class="name">{{ album.name }}</h5>
-          <h6 class="artist">{{ album.artist }}</h6>
+          <h5 class="name">{{ artist.name }}</h5>
+          <!--<h6 class="artist">{{ artist.artist }}</h6>-->
         </div>
       </li>
     </ul>

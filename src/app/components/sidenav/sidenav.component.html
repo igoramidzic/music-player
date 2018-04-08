@@ -1,11 +1,6 @@
 <div [ngClass]="{ 'mac': os == 'mac', 'not-mac': os != 'mac' }" class="main-sidenav">
 
   <div class="scrollable-content">
-    <div class="signup-login-container" *ngIf="!authService.user">
-        <a mat-button class="auth-btn signup" href="https://www.spotify.com/us/signup/">Signup</a>
-        <a href="/api/login" mat-button class="auth-btn login">Login</a>
-    </div>
-
     <div class="user-info-container" *ngIf="authService.user">
       <div class="content">
         <div class="profile-image-container">
