@@ -26,11 +26,12 @@ export class PlaybackSdkService {
         window.player = new window.Spotify.Player({
           name: 'Music Player Web App',
           getOAuthToken: callback => {
-            // // Run code to get a fresh access token
-            // this.authService.getNewAccessToken().subscribe((res: {access_token}) => {
-            //   callback(res.access_token);
-            // });
-            callback(this.authService.user.access_token);
+            // Run code to get a fresh access token
+            this.authService.getNewAccessToken().subscribe((res: {access_token}) => {
+              callback(res.access_token);
+            });
+            // For development - so you can develop in NG cli instead of express server
+            // callback(this.authService.user.access_token);
           },
           volume: 1
         });
