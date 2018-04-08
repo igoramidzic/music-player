@@ -42,6 +42,7 @@ import { BetaTagComponent } from './components/beta-tag/beta-tag.component';
 import { MainApplicationComponent } from './components/main-application/main-application.component';
 import { SafePipe } from './pipes/safe.pipe';
 import {RecentlyListenedService} from './services/recently-listened.service';
+import {TopArtistsAndTracksService} from './services/top-artists-and-tracks.service';
 
 @NgModule({
   declarations: [
@@ -82,7 +83,7 @@ import {RecentlyListenedService} from './services/recently-listened.service';
     HttpClientModule,
     NgPipesModule
   ],
-  providers: [AudioService, AuthService, CookieService, PlaybackSdkService, RecentlyListenedService, SimpleTimer],
+  providers: [AudioService, AuthService, CookieService, PlaybackSdkService, RecentlyListenedService, SimpleTimer, TopArtistsAndTracksService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

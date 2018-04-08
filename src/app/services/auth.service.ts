@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {ActivatedRoute, Router} from '@angular/router';
+import {Subject} from 'rxjs/Subject';
+import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class AuthService {
 
-  user: any = null;
+  $user: Subject<any> = new Subject();
+  user: any;
 
   constructor(private http: HttpClient,
               private route: ActivatedRoute,
@@ -18,7 +21,9 @@ export class AuthService {
         };
         this.getUserInfo(userCredentials);
       }
-    })
+    });
+
+    this.$user.subscribe(user => this.user = user);
   }
 
   getUserInfo (userCredentials) {
@@ -27,12 +32,12 @@ export class AuthService {
         'Authorization': 'Bearer ' + userCredentials.access_token
       })
     }).subscribe(user => {
-      this.user = user;
+      this.$user.next(user);
       this.user.access_token = userCredentials.access_token;
       this.user.refresh_token = userCredentials.refresh_token;
       // // Navigates to `/` to remove query parameters
       // this.router.navigate(['']);
-    })
+    });
   }
 
   // Not yet implemented
@@ -42,6 +47,10 @@ export class AuthService {
 
   logout () {
 
+  }
+
+  getUser(): Observable<any> {
+    return this.$user.asObservable();
   }
 
 }
