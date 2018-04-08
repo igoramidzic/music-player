@@ -12,6 +12,7 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { HttpClientModule } from '@angular/common/http';
 import { NgPipesModule } from 'ngx-pipes';
+import { SimpleTimer } from 'ng2-simple-timer';
 import {environment} from '../environments/environment';
 
 import {AudioService} from './services/audio.service';
@@ -81,7 +82,7 @@ import {RecentlyListenedService} from './services/recently-listened.service';
     HttpClientModule,
     NgPipesModule
   ],
-  providers: [AudioService, AuthService, CookieService, PlaybackSdkService, RecentlyListenedService],
+  providers: [AudioService, AuthService, CookieService, PlaybackSdkService, RecentlyListenedService, SimpleTimer],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
