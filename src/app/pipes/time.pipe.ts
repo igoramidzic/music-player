@@ -5,7 +5,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class TimePipe implements PipeTransform {
 
-  transform(seconds){
+  transform(milliseconds){
+    let seconds = milliseconds / 1000;
     let hour = Math.floor(seconds / 3600);
     seconds = seconds - 3600 * hour;
     let minute = Math.floor(seconds / 60);
