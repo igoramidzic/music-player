@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {PlaybackSdkService} from '../../../../services/playback-sdk.service';
 
 @Component({
   selector: 'app-header-song',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderSongComponent implements OnInit {
 
-  constructor() { }
+  playerState: any;
+
+  constructor(private playbackSDKService: PlaybackSdkService) { }
 
   ngOnInit() {
+    this.playbackSDKService.getPlayerState().subscribe(state => {
+      this.playerState = state;
+    });
   }
 
 }

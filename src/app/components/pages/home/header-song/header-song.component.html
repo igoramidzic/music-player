@@ -2,17 +2,17 @@
   <div style="background-image: url('./assets/img/home-design1.png')" class="background-image-container"></div>
   <div class="wrapper center-content">
     <div class="album-cover-container">
-      <img src="assets/img/evolve-album.jpg" alt="" class="album-img">
+      <img src="{{ playerState?.track_window.current_track.album.images[0].url }}" alt="" class="album-img">
     </div>
     <div class="song-info-container center-container">
       <div class="center-content">
         <div class="song-info">
-          <h5 class="title">Walking the wire</h5>
-          <h6 class="artist">Imagine Dragons</h6>
+          <h5 class="title">{{ playerState?.track_window.current_track.name}}</h5>
+          <h6 class="artist">{{ playerState?.track_window.current_track.artists[0].name }}</h6>
         </div>
         <div class="next-song-info">
           <p class="header">UP NEXT</p>
-          <p class="song">Golden Sands</p>
+          <p class="song">{{ playerState?.track_window.next_tracks[0].name }}</p>
         </div>
       </div>
     </div>
