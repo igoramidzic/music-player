@@ -5,7 +5,7 @@ require('dotenv').config();
 
 let client_id = process.env.CLIENT_ID || '1234abcd'; // Your client id
 let client_secret = process.env.CLIENT_SECRET || '1234abcd'; // Your secret
-let redirect_uri = process.env.REDIRECT_URI || 'http://localhost:3000/api/callback'; // Your redirect uri
+let redirect_uri = process.env.REDIRECT_URI || 'http://localhost:3000/apicallback'; // Your redirect uri
 
 let port = process.env.PORT || '3000';
 
@@ -21,7 +21,7 @@ app.use(express.static(__dirname + '/dist'));
 
 app.get('/api/login', function(req, res) {
   // your application requests authorization
-  let scope = 'user-read-private user-read-birthdate user-read-email playlist-read-private user-library-modify playlist-read-collaborative playlist-modify-private user-follow-modify user-read-currently-playing user-read-recently-played user-library-read user-top-read playlist-modify-public user-follow-read user-read-playback-state user-modify-playback-state';
+  let scope = 'user-read-private streaming user-read-birthdate user-read-email playlist-read-private user-library-modify playlist-read-collaborative playlist-modify-private user-follow-modify user-read-currently-playing user-read-recently-played user-library-read user-top-read playlist-modify-public user-follow-read user-read-playback-state user-modify-playback-state';
   console.log("Hello");
   res.redirect('https://accounts.spotify.com/authorize?' +
     querystring.stringify({

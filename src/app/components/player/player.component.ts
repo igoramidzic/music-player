@@ -1,5 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {AudioService} from '../../services/audio.service';
+import {PlaybackSdkService} from '../../services/playback-sdk.service';
 
 @Component({
   selector: 'app-player',
@@ -8,28 +9,31 @@ import {AudioService} from '../../services/audio.service';
 })
 export class PlayerComponent implements OnInit {
 
-  constructor(private audioService: AudioService) { }
+  playerState: any;
+
+  constructor(private playbackSDKService: PlaybackSdkService) {
+    this.playbackSDKService.getPlayerState().subscribe(state => {
+      this.playerState = state;
+      console.log(this.playerState);
+    });
+  }
 
   ngOnInit() {
   }
 
-  onToggleAudio () {
-    this.audioService.toggleAudio();
+  onTogglePlayback () {
+    this.playbackSDKService.togglePlayback();
   }
 
-  onSeekBack () {
-    // ..
+  onNextTrack () {
+    this.playbackSDKService.nextTrack();
   }
 
-  onSeekForward () {
-    // ..
+  onPreviousTrack () {
+    this.playbackSDKService.previousTrack();
   }
 
   onFavorite () {
-    // ..
-  }
-
-  onToggleShuffle () {
     // ..
   }
 

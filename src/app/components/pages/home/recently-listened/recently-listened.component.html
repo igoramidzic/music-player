@@ -4,10 +4,10 @@
   </div>
   <div class="recent-songs-container">
     <ul class="recent-songs-list center-container">
-      <li class="recent-song" *ngFor="let song of recentlyPlayed">
+      <li class="recent-song" *ngFor="let song of recentlyListenedItems">
         <div class="center-content">
           <div class="album-img">
-            <img class="img" src="assets/img/{{ song.url }}" alt="">
+            <img class="img" src="{{ song.imgURL }}" alt="">
           </div>
           <div class="info">
             <h5 class="title">{{ song.name }}</h5>

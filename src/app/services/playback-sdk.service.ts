@@ -1,28 +1,76 @@
-import { Injectable } from '@angular/core';
+import {Injectable, NgZone} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {AuthService} from './auth.service';
+import {Observable} from 'rxjs/Observable';
+import {Subject} from 'rxjs/Subject';
+
+declare global {
+  interface Window {
+    onSpotifyWebPlaybackSDKReady: () => void;
+    spotifyReady: Promise<void>;
+    Spotify: any;
+    player: any;
+  }
+}
 
 @Injectable()
 export class PlaybackSdkService {
 
-  accessToken: string = 'Bearer BQAx-DWwYyw04LQ5Oj2dN3sBvYF4uN85bjFAa1XyAHyJziXFAd9yE9FDbTAAPkrQ9HsA_3fnDc4kGrycS_Dce_sexglbnOTjyApU2fQhf3nKEaqzqvW-COMvDOFtA1typuU1pzvKVSeqGppkZqTQYl3T9Iv34donJilmJP1ip-5WXY4MIPvvI41s4gqVndXMVkHaT4mRXgh6wSGQ-WoLiZdZC-Z79zsnBk9Aw7u9lPn6GcQhKNFmeRQia7cCDCesQWpGRijVHbye';
+  private playerState = new Subject<any>();
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private authService: AuthService, private zone: NgZone) {
+    window.player;
+    window.onSpotifyWebPlaybackSDKReady = () => {
+      console.log(this.authService.user);
+      if (this.authService.user) {
+        window.player = new window.Spotify.Player({
+          name: 'Music Player Web App',
+          getOAuthToken: callback => {
+            // // Run code to get a fresh access token
+            // this.authService.getNewAccessToken().subscribe((res: {access_token}) => {
+            //   callback(res.access_token);
+            // });
+            callback(this.authService.user.access_token);
+          },
+          volume: 1
+        });
+
+        // Connect to the player!
+        window.player.connect().then(success => {
+          console.log("Player connected successfully");
+        });
+
+        window.player.addListener('player_state_changed', (state: any) => {
+          this.zone.run(() =>this.playerState.next(state));
+        });
+      }
+    }
   }
 
-  pausePlayback () {
-    return this.http.put('https://api.spotify.com/v1/me/player/pause', {}, {
-      headers: new HttpHeaders({
-        'Authorization': this.accessToken
-      })
-    })
+  togglePlayback () {
+    window.player.togglePlay().then(() => {
+      console.log('Toggled playback!');
+    });
   }
 
-  playPlayback () {
-    return this.http.put('https://api.spotify.com/v1/me/player/play', {}, {
-      headers: new HttpHeaders({
-        'Authorization': this.accessToken
-      })
-    })
+  nextTrack () {
+    window.player.nextTrack().then(() => {
+      console.log('Skipped to next track!');
+    });
+  }
+
+  previousTrack () {
+    window.player.previousTrack().then(() => {
+      console.log('Set to previous track!');
+    });
+  }
+
+  favoriteTrack () {
+
+  }
+
+  getPlayerState(): Observable<any> {
+    return this.playerState.asObservable();
   }
 
 }

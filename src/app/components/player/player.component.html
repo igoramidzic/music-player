@@ -5,36 +5,42 @@
       <div class="bar-content-container current-song-container">
         <div class="content">
           <div class="album-img-container">
-            <!--<img src="assets/img/{{ currentSong?.albumCoverUrl }}" alt="" class="pro-pic">-->
+            <img src="{{ playerState?.track_window.current_track.album.images[0].url }}" alt="" class="pro-pic">
           </div>
           <div class="info-container">
             <div class="shadow-box"></div>
-            <div class="name">{{ currentSong?.name || 'None' }}</div>
-            <div class="artist">{{ currentSong?.artist || 'None' }}</div>
+            <div class="name">{{ playerState?.track_window.current_track.name || 'None' }}</div>
+            <div class="artist">{{ playerState?.track_window.current_track.artists[0].name || 'None' }}</div>
           </div>
         </div>
       </div>
 
       <div class="prev-next-container bar-content-container now-playing-bar__left">
-        <h4 class="title">PREVIOUS</h4>
-        <h4 class="song">Podobny</h4>
+        <span *ngIf="playerState?.track_window.previous_tracks.length > 0">
+          <h4 class="title">PREVIOUS</h4>
+          <h4 class="song">{{ playerState?.track_window.previous_tracks[playerState.track_window.previous_tracks.length - 1].name }}</h4>
+        </span>
       </div>
 
       <div class="bar-content-container now-playing-bar__center">
         <div class="player-controls">
           <div class="player-controls__buttons">
             <button class="player-btn" (click)="onFavorite()"><i class="far fa-heart"></i></button>
-            <button class="player-btn" (click)="onSeekBack()"><i class="fas fa-step-backward"></i></button>
-            <button class="player-btn play-pause-btn" onclick="resumeSong()">
-              <span *ngIf="false"><i class="fas fa-play"></i></span>
-              <span *ngIf="true"><i class="fas fa-pause"></i></span>
+            <button class="player-btn" (click)="onPreviousTrack()"><i class="fas fa-step-backward"></i></button>
+            <button class="player-btn play-pause-btn" (click)="onTogglePlayback()">
+              <span *ngIf="playerState?.paused">
+                <i class="fas fa-play"></i>
+              </span>
+              <span *ngIf="!playerState?.paused">
+                <i class="fas fa-pause"></i>
+              </span>
             </button>
-            <button class="player-btn" (click)="onSeekForward()"><i class="fas fa-step-forward"></i></button>
+            <button class="player-btn" (click)="onNextTrack()"><i class="fas fa-step-forward"></i></button>
             <button class="player-btn" (click)="onToggleShuffle()"><i class="fas fa-random"></i></button>
           </div>
 
           <div class="playback-bar">
-            <div class="playback-bar__progress-time">{{  0 | time }}</div>
+            <div class="playback-bar__progress-time">{{ 0 | time }}</div>
             <div style="width: 100%">
               <div class="progress-bar-hello">
                 <mat-slider [max]="1"
@@ -50,8 +56,10 @@
       </div>
 
       <div class="prev-next-container bar-content-container now-playing-bar__right">
-        <h4 class="title">NEXT</h4>
-        <h4 class="song">Golden Sands</h4>
+        <span *ngIf="playerState?.track_window.next_tracks.length > 0">
+          <h4 class="title">PREVIOUS</h4>
+          <h4 class="song">{{ playerState?.track_window.next_tracks[0].name }}</h4>
+        </span>
       </div>
     </div>
   </div>

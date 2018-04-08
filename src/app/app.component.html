@@ -1,8 +1,7 @@
 <div class="drag-bar"></div>
-<app-sidenav class="sidenav"></app-sidenav>
-<div class="main-content-container">
-  <router-outlet></router-outlet>
-</div>
-<app-player></app-player>
+
+<app-main-application *ngIf="authService.user"></app-main-application>
+
+<app-login *ngIf="!authService.user"></app-login>
 
 <app-beta-tag></app-beta-tag>
