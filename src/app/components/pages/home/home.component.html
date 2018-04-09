@@ -1,4 +1,4 @@
-<div class="home-container" [ngClass]="{ 'mac': os == 'mac', 'not-mac': os != 'mac' }">
+<div class="home-container" [ngClass]="{ 'mac': os == 'mac', 'not-mac': os != 'mac', 'device-notification-shown': playbackDeviceService.getShowNotification() }">
   <div class="main-wrapper">
     <div class="scrollable-content">
       <div class="grid-container">

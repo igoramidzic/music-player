@@ -16,8 +16,7 @@ export class RecommendedAlbumsComponent implements OnInit {
   ngOnInit() {
     this.topAristsAndTracksService.getTopArists().subscribe(artists => {
       this.topArtistsList = artists.items;
-      console.log(artists);
-    })
+    });
 
     this.topAristsAndTracksService.getTopTracks().subscribe(tracks => {
       this.topTracksList = tracks.items;

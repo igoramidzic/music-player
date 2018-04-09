@@ -21,26 +21,32 @@ export class PlayerComponent implements OnInit {
     this.st.newTimer('1sec',1);
     this.playbackSDKService.getPlayerState().subscribe(state => {
       this.playerState = state;
-      this.currentPosition = this.playerState.position;
+      if (this.playerState)
+        this.currentPosition = this.playerState.position;
       this.toggleTimer();
     });
   }
 
   toggleTimer () {
-    if (this.playerState.paused) {
+    if (this.playerState) {
+      if (this.playerState.paused) {
+        this.playing = false;
+        this.st.unsubscribe(this.timer);
+      } else {
+        if (!this.playing) {
+          this.playing = true;
+          let firstFrame;
+          this.timer = this.st.subscribe('1sec', () => {
+            if (firstFrame) {
+              this.currentPosition += 1000;
+            }
+            firstFrame = true;
+          });
+        }
+      }
+    } else {
       this.playing = false;
       this.st.unsubscribe(this.timer);
-    } else {
-      if (!this.playing) {
-        this.playing = true;
-        let firstFrame;
-        this.timer = this.st.subscribe('1sec', () => {
-          if (firstFrame) {
-            this.currentPosition += 1000;
-          }
-          firstFrame = true;
-        });
-      }
     }
   }
 

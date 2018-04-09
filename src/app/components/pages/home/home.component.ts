@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Ng2DeviceService} from 'ng2-device-detector';
 import {TopArtistsAndTracksService} from '../../../services/top-artists-and-tracks.service';
+import {PlaybackDeviceService} from '../../../services/playback-device.service';
 
 @Component({
   selector: 'app-home',
@@ -12,7 +13,7 @@ export class HomeComponent implements OnInit {
   recentlyPlayed: { name: String, artist: String, url: String }[];
   os: string;
 
-  constructor(private deviceService: Ng2DeviceService, private topArtistsAndTracksService: TopArtistsAndTracksService) { }
+  constructor(private deviceService: Ng2DeviceService, private topArtistsAndTracksService: TopArtistsAndTracksService, private playbackDeviceService: PlaybackDeviceService) { }
 
   ngOnInit() {
     this.os = this.deviceService.os;

@@ -43,6 +43,8 @@ import { MainApplicationComponent } from './components/main-application/main-app
 import { SafePipe } from './pipes/safe.pipe';
 import {RecentlyListenedService} from './services/recently-listened.service';
 import {TopArtistsAndTracksService} from './services/top-artists-and-tracks.service';
+import {PlaybackDeviceService} from './services/playback-device.service';
+import { DeviceNotificationComponent } from './components/player/device-notification/device-notification.component';
 
 @NgModule({
   declarations: [
@@ -67,6 +69,7 @@ import {TopArtistsAndTracksService} from './services/top-artists-and-tracks.serv
     BetaTagComponent,
     MainApplicationComponent,
     SafePipe,
+    DeviceNotificationComponent,
   ],
   imports: [
     BrowserModule,
@@ -83,7 +86,7 @@ import {TopArtistsAndTracksService} from './services/top-artists-and-tracks.serv
     HttpClientModule,
     NgPipesModule
   ],
-  providers: [AudioService, AuthService, CookieService, PlaybackSdkService, RecentlyListenedService, SimpleTimer, TopArtistsAndTracksService],
+  providers: [AudioService, AuthService, CookieService, PlaybackSdkService, RecentlyListenedService, SimpleTimer, TopArtistsAndTracksService, PlaybackDeviceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

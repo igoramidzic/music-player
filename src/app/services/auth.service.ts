@@ -32,9 +32,10 @@ export class AuthService {
         'Authorization': 'Bearer ' + userCredentials.access_token
       })
     }).subscribe(user => {
-      this.$user.next(user);
+      this.user = user;
       this.user.access_token = userCredentials.access_token;
       this.user.refresh_token = userCredentials.refresh_token;
+      this.$user.next(this.user);
       // // Navigates to `/` to remove query parameters
       // this.router.navigate(['']);
     });
