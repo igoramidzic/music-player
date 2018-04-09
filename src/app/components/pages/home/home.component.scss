@@ -13,6 +13,12 @@
   font-weight: 300;
 }
 
+.device-notification-shown {
+  .main-wrapper {
+    padding: 25px 0 116px 0 !important;
+  }
+}
+
 .home-container {
   color: $text_color;
   font-family: $primary_font;

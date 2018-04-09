@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {AuthService} from './auth.service';
 import {Observable} from 'rxjs/Observable';
 import {Subject} from 'rxjs/Subject';
+import {PlaybackDeviceService} from './playback-device.service';
 
 declare global {
   interface Window {
@@ -18,7 +19,8 @@ export class PlaybackSdkService {
 
   private playerState = new Subject<any>();
 
-  constructor(private http: HttpClient, private authService: AuthService, private zone: NgZone) {
+  constructor(private http: HttpClient, private authService: AuthService, private zone: NgZone,
+              private playbackDeviceService: PlaybackDeviceService) {
     window.player;
     window.onSpotifyWebPlaybackSDKReady = () => {
       if (this.authService.user) {
@@ -38,10 +40,17 @@ export class PlaybackSdkService {
         // Connect to the player!
         window.player.connect().then(success => {
           console.log("Player connected successfully");
+          setTimeout(() => {
+            this.playbackDeviceService.updateAvailableDevices();
+          },750);
         });
 
         window.player.addListener('player_state_changed', (state: any) => {
-          this.zone.run(() =>this.playerState.next(state));
+          this.zone.run(() => {
+            this.playerState.next(state);
+            this.playbackDeviceService.updateAvailableDevices();
+          });
+          console.log(state);
         });
       }
     }

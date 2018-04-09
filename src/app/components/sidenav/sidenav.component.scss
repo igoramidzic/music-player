@@ -6,6 +6,13 @@
   }
 }
 
+.device-notification-shown {
+  padding-bottom: calc(90px + 48px + 26px) !important;
+  .shadow-box-bottom {
+    bottom: calc(90px + 48px + 26px) !important;
+  }
+}
+
 .main-sidenav {
   font-family: $primary_font;
   height: 100vh;
@@ -276,7 +283,7 @@
 @media only screen and (max-width: 1100px) {
   .main-sidenav {
     width: 200px;
-    padding: 25px 25px 90px 25px;
+    padding: 25px 25px calc(90px + 48px) 25px
   }
 
   .profile-image-container {

@@ -1,0 +1,5 @@
+<div class="device-notification-container" *ngIf="playbackDeviceService.getShowNotification()">
+  <div class="text-container">
+    <i class="fas fa-headphones"></i> Listening on <span class="device-name">{{ playbackDeviceService.activeDevice?.name || 'Unknown' }}</span>
+  </div>
+</div>
