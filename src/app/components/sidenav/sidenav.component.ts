@@ -3,6 +3,7 @@ import {Ng2DeviceService} from 'ng2-device-detector';
 import { AuthService } from '../../services/auth.service';
 import { AudioService } from '../../services/audio.service';
 import {environment} from '../../../environments/environment';
+import {PlaybackDeviceService} from '../../services/playback-device.service';
 
 @Component({
   selector: 'app-sidenav',
@@ -16,7 +17,7 @@ export class SidenavComponent implements OnInit {
 
   constructor(private deviceService: Ng2DeviceService,
               private authService: AuthService,
-              private audioService: AudioService) { }
+              private playbackDeviceService: PlaybackDeviceService) { }
 
   ngOnInit() {
     this.os = this.deviceService.os;
