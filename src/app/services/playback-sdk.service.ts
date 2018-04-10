@@ -23,37 +23,47 @@ export class PlaybackSdkService {
               private playbackDeviceService: PlaybackDeviceService) {
     window.player;
     window.onSpotifyWebPlaybackSDKReady = () => {
+
       if (this.authService.user) {
-        window.player = new window.Spotify.Player({
-          name: 'Music Player Web App',
-          getOAuthToken: callback => {
-            // // Run code to get a fresh access token
-            // this.authService.getNewAccessToken().subscribe((res: {access_token}) => {
-            //   callback(res.access_token);
-            // });
-            // For development - so you can develop in NG cli instead of express server
-            callback(this.authService.user.access_token);
-          },
-          volume: 1
-        });
-
-        // Connect to the player!
-        window.player.connect().then(success => {
-          console.log("Player connected successfully");
-          setTimeout(() => {
-            this.playbackDeviceService.updateAvailableDevices();
-          },750);
-        });
-
-        window.player.addListener('player_state_changed', (state: any) => {
-          this.zone.run(() => {
-            this.playerState.next(state);
-            this.playbackDeviceService.updateAvailableDevices();
-          });
-          console.log(state);
-        });
+        this.createPlayerConnection();
       }
+
+      this.authService.getUser().subscribe(() => {
+        this.createPlayerConnection();
+      });
+
     }
+  }
+
+  createPlayerConnection () {
+    window.player = new window.Spotify.Player({
+      name: 'Music Player Web App',
+      getOAuthToken: callback => {
+        // // Run code to get a fresh access token
+        // this.authService.getNewAccessToken().subscribe((res: {access_token}) => {
+        //   callback(res.access_token);
+        // });
+        // For development - so you can develop in NG cli instead of express server
+        callback(this.authService.user.access_token);
+      },
+      volume: 1
+    });
+
+    // Connect to the player!
+    window.player.connect().then(success => {
+      console.log("Player connected successfully");
+      setTimeout(() => {
+        this.playbackDeviceService.updateAvailableDevices();
+      },750);
+    });
+
+    window.player.addListener('player_state_changed', (state: any) => {
+      this.zone.run(() => {
+        this.playerState.next(state);
+        this.playbackDeviceService.updateAvailableDevices();
+      });
+      console.log(state);
+    });
   }
 
   togglePlayback () {
