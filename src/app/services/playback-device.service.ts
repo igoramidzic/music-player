@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import {Injectable, NgZone} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {AuthService} from './auth.service';
 
@@ -9,7 +9,7 @@ export class PlaybackDeviceService {
   thisDevice: any;
   activeDevice: any;
 
-  constructor(private http: HttpClient, private authService: AuthService) {
+  constructor(private http: HttpClient, private authService: AuthService, private zone: NgZone) {
     if (this.authService.user) {
       this.updateAvailableDevices();
     }
@@ -32,16 +32,17 @@ export class PlaybackDeviceService {
       this.availableDevices = devices.devices;
       this.getActiveDeviceInfo();
       this.getThisDeviceInfo();
-      console.log(this.availableDevices);
     });
   }
 
   getThisDeviceInfo () {
-    this.thisDevice = this.availableDevices.filter((x) => {
-      if (x.name === 'Music Player Web App') {
-        return x;
-      }
-    })[0];
+    this.zone.run(() => {
+      this.thisDevice = this.availableDevices.filter((x) => {
+        if (x.name === 'Music Player Web App') {
+          return x;
+        }
+      })[0];
+    });
   }
 
   getActiveDeviceInfo () {
@@ -52,8 +53,22 @@ export class PlaybackDeviceService {
     })[0];
   }
 
+  setPlaybackDevice (device_id) {
+    return this.http.put('https://api.spotify.com/v1/me/player', {
+      "device_ids": [device_id]
+    }, {
+      headers: new HttpHeaders({
+        'Authorization': 'Bearer ' + this.authService.user.access_token
+      })
+    })
+  }
+
   getShowNotification(): boolean {
     return this.activeDevice && this.activeDevice.name != 'Music Player Web App';
+  }
+
+  getShowDeviceList(): boolean {
+    return !!this.thisDevice;
   }
 
 }

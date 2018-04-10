@@ -3,7 +3,12 @@
     <div class="now-playing-bar center-content">
 
       <div class="bar-content-container current-song-container">
-        <div class="content">
+
+        <div class="connect-device-container" *ngIf="!playerState && playbackDeviceService.getShowDeviceList()">
+          <button class="action-btn" mat-button (click)="transferPlaybackToThisDevice()">Connect to Device</button>
+        </div>
+
+        <div class="content" *ngIf="playerState">
           <div class="album-img-container">
             <img src="{{ playerState?.track_window.current_track.album.images[0].url }}" class="pro-pic">
           </div>

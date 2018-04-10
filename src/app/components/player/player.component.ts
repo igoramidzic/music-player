@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {PlaybackSdkService} from '../../services/playback-sdk.service';
 import {SimpleTimer} from 'ng2-simple-timer';
+import {PlaybackDeviceService} from '../../services/playback-device.service';
 
 @Component({
   selector: 'app-player',
@@ -11,11 +12,11 @@ export class PlayerComponent implements OnInit {
 
   playerState: any;
   currentPosition: number = 0;
-  currentSliderPosition: number;
   playing: boolean = false;
   timer;
 
-  constructor(private playbackSDKService: PlaybackSdkService, private st: SimpleTimer) { }
+  constructor(private playbackSDKService: PlaybackSdkService, private st: SimpleTimer,
+              public playbackDeviceService: PlaybackDeviceService) { }
 
   ngOnInit() {
     this.st.newTimer('1sec',1);
@@ -69,6 +70,11 @@ export class PlayerComponent implements OnInit {
 
   onFavorite () {
     // ..
+  }
+
+  transferPlaybackToThisDevice () {
+    this.playbackDeviceService.setPlaybackDevice(this.playbackDeviceService.thisDevice.id)
+      .subscribe();
   }
 
 }
