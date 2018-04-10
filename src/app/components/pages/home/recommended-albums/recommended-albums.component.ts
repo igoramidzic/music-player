@@ -1,26 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import {TopArtistsAndTracksService} from '../../../../services/top-artists-and-tracks.service';
+import {RecommendedAlbumsService} from '../../../../services/recommended-albums.service';
 
 @Component({
   selector: 'app-recommended-albums',
   templateUrl: './recommended-albums.component.html',
   styleUrls: ['./recommended-albums.component.scss']
 })
+
 export class RecommendedAlbumsComponent implements OnInit {
 
-  topArtistsList: any[];
-  topTracksList: any[];
-
-  constructor(private topAristsAndTracksService: TopArtistsAndTracksService) { }
+  constructor(private recommendedAlbumsService: RecommendedAlbumsService) { }
 
   ngOnInit() {
-    this.topAristsAndTracksService.getTopArists().subscribe(artists => {
-      this.topArtistsList = artists.items;
-    });
-
-    this.topAristsAndTracksService.getTopTracks().subscribe(tracks => {
-      this.topTracksList = tracks.items;
-    })
   }
 
 }
