@@ -15,6 +15,15 @@
       height: $player_height;
       padding: 0 16px;
 
+      .connect-device-container {
+        text-align: center;
+        .action-btn {
+          color: $text_color;
+          border: 1px solid $text_color;
+          outline: none
+        }
+      }
+
       .current-song-container {
         display: -ms-flexbox;
         display: flex;
