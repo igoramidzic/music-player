@@ -23,15 +23,14 @@ export class SidenavComponent implements OnInit {
     this.os = this.deviceService.os;
 
     this.queue = [
-      { name: 'Golden Sands', artist: 'Imagine Dragons' },
-      { name: 'Neon Sound', artist: 'AVICII' },
-      { name: 'Drop The Game', artist: 'Flume' },
-      { name: 'On Hold', artist: 'the XX' },
+      { name: 'Golden Sands', artist: 'Imagine Dragons' }
     ]
   }
 
-  onLogout () {
-    this.authService.logout();
+  onChangeVolume (volume) {
+    volume = Math.floor(volume * 100);
+    this.playbackDeviceService.changeVolume(volume)
+      .subscribe();
   }
 
 }
