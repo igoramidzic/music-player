@@ -32,6 +32,7 @@ export class PlaybackDeviceService {
       this.availableDevices = devices.devices;
       this.getActiveDeviceInfo();
       this.getThisDeviceInfo();
+      console.log(this.availableDevices);
     });
   }
 
@@ -57,6 +58,14 @@ export class PlaybackDeviceService {
     return this.http.put('https://api.spotify.com/v1/me/player', {
       "device_ids": [device_id]
     }, {
+      headers: new HttpHeaders({
+        'Authorization': 'Bearer ' + this.authService.user.access_token
+      })
+    })
+  }
+
+  changeVolume (volume) {
+    return this.http.put('https://api.spotify.com/v1/me/player/volume?volume_percent=' + volume, {}, {
       headers: new HttpHeaders({
         'Authorization': 'Bearer ' + this.authService.user.access_token
       })
