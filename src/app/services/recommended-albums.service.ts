@@ -4,20 +4,26 @@ import {AuthService} from './auth.service';
 import {Subject} from 'rxjs/Subject';
 import {Observable} from 'rxjs/Observable';
 import {TopArtistsAndTracksService} from './top-artists-and-tracks.service';
+import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 
 @Injectable()
 export class RecommendedAlbumsService {
 
-  $recommendedAlbums: Subject<any> = new Subject();
+  $recommendedAlbums: BehaviorSubject<any> = new BehaviorSubject<any>(null);
 
   constructor(private http: HttpClient, private authService: AuthService,
               private topAristsAndTracksService: TopArtistsAndTracksService) {
-    this.topAristsAndTracksService.getTopTracks().subscribe(tracks => {
-      this.fetchRecommendedAlbums(tracks.items).subscribe((res: {tracks}) => {
-        console.log(this.filterAndMapAlbumsUsingTracks(res.tracks));
-        this.$recommendedAlbums.next(this.filterAndMapAlbumsUsingTracks(res.tracks));
-      })
-    })
+    this.authService.$user.subscribe(user => {
+      if (user) {
+        this.topAristsAndTracksService.$usersTopTracks.subscribe(tracks => {
+          if (tracks) {
+            this.fetchRecommendedAlbums(tracks.items).subscribe((res: {tracks}) => {
+              this.$recommendedAlbums.next(this.filterAndMapAlbumsUsingTracks(res.tracks));
+            })
+          }
+        });
+      }
+    });
   }
 
   fetchRecommendedAlbums (tracks) {
@@ -25,7 +31,7 @@ export class RecommendedAlbumsService {
       headers: new HttpHeaders({
         'Authorization': 'Bearer ' + this.authService.user.access_token
       })
-    })
+    });
   }
 
   formatSeedTracksString (tracks, numberOfElements) {
@@ -62,10 +68,6 @@ export class RecommendedAlbumsService {
     }
 
     return filteredAlbums;
-  }
-
-  getRecommendedAlbums(): Observable<any> {
-    return this.$recommendedAlbums.asObservable();
   }
 
 }

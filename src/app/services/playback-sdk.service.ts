@@ -4,6 +4,7 @@ import {AuthService} from './auth.service';
 import {Observable} from 'rxjs/Observable';
 import {Subject} from 'rxjs/Subject';
 import {PlaybackDeviceService} from './playback-device.service';
+import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 
 declare global {
   interface Window {
@@ -17,21 +18,15 @@ declare global {
 @Injectable()
 export class PlaybackSdkService {
 
-  private playerState = new Subject<any>();
+  public $playerState: BehaviorSubject<any> = new BehaviorSubject<any>(null);
 
   constructor(private http: HttpClient, private authService: AuthService, private zone: NgZone,
               private playbackDeviceService: PlaybackDeviceService) {
-    window.player;
     window.onSpotifyWebPlaybackSDKReady = () => {
-
-      if (this.authService.user) {
-        this.createPlayerConnection();
-      }
-
-      this.authService.getUser().subscribe(() => {
-        this.createPlayerConnection();
-      });
-
+      this.authService.$user.subscribe(user => {
+        if (user && !window.player)
+          this.createPlayerConnection();
+      })
     }
   }
 
@@ -51,7 +46,6 @@ export class PlaybackSdkService {
 
     // Connect to the player!
     window.player.connect().then(success => {
-      console.log("Player connected successfully");
       setTimeout(() => {
         this.playbackDeviceService.updateAvailableDevices();
       },750);
@@ -59,10 +53,9 @@ export class PlaybackSdkService {
 
     window.player.addListener('player_state_changed', (state: any) => {
       this.zone.run(() => {
-        this.playerState.next(state);
+        this.$playerState.next(state);
         this.playbackDeviceService.updateAvailableDevices();
       });
-      console.log(state);
     });
   }
 
@@ -88,16 +81,20 @@ export class PlaybackSdkService {
 
   }
 
-  seekToPosition (position_ms) {
-    return this.http.put('https://api.spotify.com/v1/me/player/seek?position_ms=' + position_ms, {}, {
+  toggleShuffle (state) {
+    return this.http.put('https://api.spotify.com/v1/me/player/shuffle?state=' + state, {}, {
       headers: new HttpHeaders({
         'Authorization': 'Bearer ' + this.authService.user.access_token
       })
     });
   }
 
-  getPlayerState(): Observable<any> {
-    return this.playerState.asObservable();
+  seekToPosition (position_ms) {
+    return this.http.put('https://api.spotify.com/v1/me/player/seek?position_ms=' + position_ms, {}, {
+      headers: new HttpHeaders({
+        'Authorization': 'Bearer ' + this.authService.user.access_token
+      })
+    });
   }
 
 }

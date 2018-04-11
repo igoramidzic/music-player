@@ -20,11 +20,12 @@ export class PlayerComponent implements OnInit {
 
   ngOnInit() {
     this.st.newTimer('1sec',1);
-    this.playbackSDKService.getPlayerState().subscribe(state => {
+    this.playbackSDKService.$playerState.subscribe(state => {
       this.playerState = state;
       if (this.playerState)
         this.currentPosition = this.playerState.position;
       this.toggleTimer();
+      console.log(state);
     });
   }
 
@@ -64,12 +65,21 @@ export class PlayerComponent implements OnInit {
   }
 
   onSeekPositionOnCurrentTrack (position_md) {
-    this.playbackSDKService.seekToPosition(position_md)
-      .subscribe();
+    if (this.playerState) {
+      this.playbackSDKService.seekToPosition(position_md)
+        .subscribe();
+    }
   }
 
   onFavorite () {
     // ..
+  }
+
+  onToggleShuffle () {
+    if (this.playerState) {
+      this.playbackSDKService.toggleShuffle(!this.playerState.shuffle)
+        .subscribe();
+    }
   }
 
   transferPlaybackToThisDevice () {

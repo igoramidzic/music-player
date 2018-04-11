@@ -9,11 +9,13 @@ export class RecentlyListenedService {
   $recentlyPlayedList: BehaviorSubject<any> = new BehaviorSubject<any>(null);
 
   constructor(private authService: AuthService, private http: HttpClient) {
-    if (this.authService.user) {
-      this.fetchRecentlyPlayedList().subscribe((res: {items}) => {
-        this.$recentlyPlayedList.next(this.mapAndFilterRecentlyPlayedList(res.items, 6));
-      })
-    }
+    this.authService.$user.subscribe(user => {
+      if (user) {
+        this.fetchRecentlyPlayedList().subscribe((res: {items}) => {
+          this.$recentlyPlayedList.next(this.mapAndFilterRecentlyPlayedList(res.items, 6));
+        })
+      }
+    });
   }
 
   fetchRecentlyPlayedList () {
