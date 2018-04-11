@@ -3,18 +3,24 @@
     <h1 class="section-header">Recently Listened</h1>
   </div>
   <div class="recent-songs-container">
-    <ul class="recent-songs-list center-container">
-      <li class="recent-song" *ngFor="let song of recentlyListenedItems">
+    <ul class="recent-songs-list center-container"
+        *ngIf="recentlyListenedService.$recentlyPlayedList | async">
+      <li class="recent-song"
+          *ngFor="let track of recentlyListenedService.$recentlyPlayedList | async">
         <div class="center-content">
           <div class="album-img">
-            <img class="img" src="{{ song.imgURL }}" alt="">
+            <img class="img" src="{{ track.imgURL }}" alt="">
           </div>
           <div class="info">
-            <h5 class="title">{{ song.name }}</h5>
-            <h6 class="artist">{{ song.artist }}</h6>
+            <h5 class="title">{{ track.name }}</h5>
+            <h6 class="artist">{{ track.artist }}</h6>
           </div>
         </div>
       </li>
     </ul>
+
+    <div *ngIf="!recentlyListenedService.$recentlyPlayedList | async">
+      Hello
+    </div>
   </div>
 </div>

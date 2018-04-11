@@ -17,7 +17,6 @@
     transform: translate(-50%, 0);
     max-width: 675px;
     position: absolute;
-    z-index: 100;
   }
 
   .wrapper {
@@ -38,6 +37,7 @@
       align-items: flex-end;
     }
     .song-info {
+      max-width: 400px;
       .title {
         color: $text_color;
         font-weight: 300;

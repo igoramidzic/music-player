@@ -11,7 +11,7 @@
           <h6 class="artist">{{ playerState?.track_window.current_track.artists[0].name }}</h6>
         </div>
         <div class="next-song-info">
-          <p class="header">UP NEXT</p>
+          <p class="header" *ngIf="playerState?.track_window.next_tracks[0].name">UP NEXT</p>
           <p class="song">{{ playerState?.track_window.next_tracks[0].name }}</p>
         </div>
       </div>
