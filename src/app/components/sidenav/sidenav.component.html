@@ -63,7 +63,7 @@
       </li>
     </ul>
 
-    <div class="queue-container">
+    <div class="queue-container" *ngIf="playerState?.track_window?.next_tracks">
       <div class="header-container center-container">
         <div class="queue-header-content center-content">
           <div class="first-line line"></div>
@@ -73,9 +73,9 @@
       </div>
 
       <ul class="queue-list">
-        <li class="queue-item" *ngFor="let song of queue">
-          <h5 class="name">{{ song.name }}</h5>
-          <h6 class="artist">{{ song.artist }}</h6>
+        <li class="queue-item" *ngFor="let track of playerState.track_window.next_tracks">
+          <h5 class="name">{{ track.name }}</h5>
+          <h6 class="artist">{{ track.artists[0].name }}</h6>
         </li>
       </ul>
     </div>
