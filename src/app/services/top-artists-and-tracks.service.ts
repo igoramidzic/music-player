@@ -3,25 +3,23 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {AuthService} from './auth.service';
 import {Observable} from 'rxjs/Observable';
 import {Subject} from 'rxjs/Subject';
+import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 
 @Injectable()
 export class TopArtistsAndTracksService {
 
   user: any;
-  $usersTopArtists: Subject<any> = new Subject();
+  $usersTopArtists: BehaviorSubject<any> = new BehaviorSubject(null);
   usersTopArtists: any;
-  $usersTopTracks: Subject<any> = new Subject();
+  $usersTopTracks: BehaviorSubject<any> = new BehaviorSubject(null);
   usersTopTracks: any;
 
   constructor(private http: HttpClient, private authService: AuthService) {
-    if (this.authService.user) {
-      this.fetchUsersTopArtistsAndTracks();
-    }
 
-    this.authService.getUser().subscribe(user => {
-      this.user = user;
-      this.fetchUsersTopArtistsAndTracks();
-    });
+    this.authService.$user.subscribe(user => {
+      if (user)
+        this.fetchUsersTopArtistsAndTracks();
+    })
   }
 
   fetchUsersTopArtistsAndTracks () {
@@ -49,14 +47,6 @@ export class TopArtistsAndTracksService {
         'Authorization': 'Bearer ' + this.authService.user.access_token
       })
     });
-  }
-
-  getTopArists(): Observable<any> {
-    return this.$usersTopArtists.asObservable();
-  }
-
-  getTopTracks(): Observable<any> {
-    return this.$usersTopTracks.asObservable();
   }
 
 }

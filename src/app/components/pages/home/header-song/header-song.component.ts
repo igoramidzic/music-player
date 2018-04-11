@@ -13,7 +13,7 @@ export class HeaderSongComponent implements OnInit {
   constructor(private playbackSDKService: PlaybackSdkService) { }
 
   ngOnInit() {
-    this.playbackSDKService.getPlayerState().subscribe(state => {
+    this.playbackSDKService.$playerState.subscribe(state => {
       this.playerState = state;
     });
   }

@@ -15,13 +15,11 @@ import { NgPipesModule } from 'ngx-pipes';
 import { SimpleTimer } from 'ng2-simple-timer';
 import {environment} from '../environments/environment';
 
-import {AudioService} from './services/audio.service';
 import {AuthService} from './services/auth.service';
 import {CookieService} from 'angular2-cookie/core';
 import {PlaybackSdkService} from './services/playback-sdk.service';
 
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { HomeComponent } from './components/pages/home/home.component';
 import { SettingsComponent } from './components/pages/settings/settings.component';
@@ -50,7 +48,6 @@ import {RecommendedAlbumsService} from './services/recommended-albums.service';
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent,
     SidenavComponent,
     HomeComponent,
     SettingsComponent,
@@ -87,7 +84,7 @@ import {RecommendedAlbumsService} from './services/recommended-albums.service';
     HttpClientModule,
     NgPipesModule
   ],
-  providers: [AudioService, AuthService, CookieService, PlaybackSdkService, RecentlyListenedService, SimpleTimer, TopArtistsAndTracksService, PlaybackDeviceService, RecommendedAlbumsService],
+  providers: [AuthService, CookieService, PlaybackSdkService, RecentlyListenedService, SimpleTimer, TopArtistsAndTracksService, PlaybackDeviceService, RecommendedAlbumsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

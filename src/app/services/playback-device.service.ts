@@ -10,11 +10,8 @@ export class PlaybackDeviceService {
   activeDevice: any;
 
   constructor(private http: HttpClient, private authService: AuthService, private zone: NgZone) {
-    if (this.authService.user) {
-      this.updateAvailableDevices();
-    }
-
-    this.authService.getUser().subscribe(user => {
+    this.authService.$user.subscribe(user => {
+      if (user)
         this.updateAvailableDevices();
     });
   }
@@ -32,7 +29,11 @@ export class PlaybackDeviceService {
       this.availableDevices = devices.devices;
       this.getActiveDeviceInfo();
       this.getThisDeviceInfo();
-      console.log(this.availableDevices);
+
+      // Make this device the active device if no active device
+      if (!this.activeDevice && this.thisDevice && this.activeDevice != this.thisDevice) {
+        this.setPlaybackDevice(this.thisDevice.id).subscribe();
+      }
     });
   }
 

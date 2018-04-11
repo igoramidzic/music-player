@@ -1,11 +1,5 @@
 @import '../../../app.component.scss';
 
-.mac .scrollable-content {
-  &::-webkit-scrollbar {
-    display: none !important
-  }
-}
-
 .section-header {
   font-size: 23px;
   color: $text_color;

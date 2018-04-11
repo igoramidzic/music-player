@@ -16,7 +16,6 @@
 .main-sidenav {
   font-family: $primary_font;
   height: 100vh;
-  min-height: 630px;
   position: absolute;
   background: #181825;
   background: -moz-linear-gradient(top, #181825 0%, #20202c 32%, #31313f 100%);
@@ -241,7 +240,7 @@
     position: absolute;
     left: 0;
     bottom: calc(90px + 48px);
-    height: 50px;
+    height: 15px;
     width: 100%;
     -webkit-box-shadow: inset -35px 0px 29px -19px #24242f;
     -moz-box-shadow: inset -35px 0px 29px -19px #24242f;
@@ -253,10 +252,6 @@
   .main-sidenav {
     width: 250px;
     padding: 25px 25px calc(90px + 48px) 40px;
-  }
-
-  .not-mac {
-    padding: 25px 10px 90px 40px;
   }
 
   .profile-image-container {

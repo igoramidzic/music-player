@@ -3,11 +3,12 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Subject} from 'rxjs/Subject';
 import {Observable} from 'rxjs/Observable';
+import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 
 @Injectable()
 export class AuthService {
 
-  $user: Subject<any> = new Subject();
+  $user: BehaviorSubject<any> = new BehaviorSubject<any>(null);
   user: any;
 
   constructor(private http: HttpClient,
@@ -32,10 +33,10 @@ export class AuthService {
         'Authorization': 'Bearer ' + userCredentials.access_token
       })
     }).subscribe(user => {
-      this.user = user;
-      this.user.access_token = userCredentials.access_token;
-      this.user.refresh_token = userCredentials.refresh_token;
-      this.$user.next(this.user);
+      let user_data: any = user;
+      user_data.access_token = userCredentials.access_token;
+      user_data.refresh_token = userCredentials.refresh_token;
+      this.$user.next(user_data);
       // // Navigates to `/` to remove query parameters
       // this.router.navigate(['']);
     });
@@ -49,13 +50,4 @@ export class AuthService {
   logout () {
 
   }
-
-  getUser(): Observable<any> {
-    return this.$user.asObservable();
-  }
-
-}
-
-interface Res {
-  access_token: string;
 }

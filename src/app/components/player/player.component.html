@@ -43,7 +43,11 @@
               </span>
             </button>
             <button class="player-btn" (click)="onNextTrack()"><i class="fas fa-step-forward"></i></button>
-            <button class="player-btn" (click)="onToggleShuffle()"><i class="fas fa-random"></i></button>
+            <button class="player-btn" (click)="onToggleShuffle()">
+              <span [ngClass]="{'highlight': playerState?.shuffle}">
+                <i class="fas fa-random"></i>
+              </span>
+            </button>
           </div>
 
           <div class="playback-bar">
@@ -51,6 +55,7 @@
             <div style="width: 100%">
               <div class="progress-bar-hello">
                 <mat-slider [max]="playerState?.duration || 1"
+                            [disabled]="!playerState"
                             [(ngModel)]="currentPosition"
                             (change)="onSeekPositionOnCurrentTrack($event.value)"
                             class="progress-bar__bg"></mat-slider>
