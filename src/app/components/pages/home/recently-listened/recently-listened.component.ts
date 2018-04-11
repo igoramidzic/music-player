@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {RecentlyListenedItem} from '../../../../models/recently-listened-item';
 import {RecentlyListenedService} from '../../../../services/recently-listened.service';
 
 @Component({
@@ -9,21 +8,9 @@ import {RecentlyListenedService} from '../../../../services/recently-listened.se
 })
 export class RecentlyListenedComponent implements OnInit {
 
-  recentlyListenedItems: RecentlyListenedItem[];
-
-  constructor(private recentlyListenedService: RecentlyListenedService) { }
+  constructor(public recentlyListenedService: RecentlyListenedService) { }
 
   ngOnInit() {
-    this.recentlyListenedService.getRecentlyPlayedList()
-      .subscribe((res: {items}) => {
-        this.recentlyListenedItems = res.items.map(value => {
-          return {
-            imgURL: value.track.album.images[0].url,
-            name: value.track.name,
-            artist: value.track.artists[0].name
-          };
-        });
-      })
   }
 
 }
