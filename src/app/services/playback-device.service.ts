@@ -11,7 +11,7 @@ export class PlaybackDeviceService {
 
   constructor(private http: HttpClient, private authService: AuthService, private zone: NgZone) {
     this.authService.$user.subscribe(user => {
-      if (user)
+      if (user && user.product == 'premium')
         this.updateAvailableDevices();
     });
   }

@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {PlaybackSdkService} from '../../services/playback-sdk.service';
 import {SimpleTimer} from 'ng2-simple-timer';
 import {PlaybackDeviceService} from '../../services/playback-device.service';
+import {FavoritesService} from '../../services/favorites.service';
 
 @Component({
   selector: 'app-player',
@@ -14,9 +15,11 @@ export class PlayerComponent implements OnInit {
   currentPosition: number = 0;
   playing: boolean = false;
   timer;
+  isFavorited: boolean;
 
   constructor(private playbackSDKService: PlaybackSdkService, private st: SimpleTimer,
-              public playbackDeviceService: PlaybackDeviceService) { }
+              public playbackDeviceService: PlaybackDeviceService,
+              public favoritesService: FavoritesService) { }
 
   ngOnInit() {
     this.st.newTimer('1sec',1);
@@ -25,8 +28,13 @@ export class PlayerComponent implements OnInit {
       if (this.playerState)
         this.currentPosition = this.playerState.position;
       this.toggleTimer();
-      console.log(state);
     });
+
+    this.favoritesService.$isFavorited.subscribe(res => {
+      if (res != null) {
+        this.isFavorited = res;
+      }
+    })
   }
 
   toggleTimer () {
@@ -72,7 +80,33 @@ export class PlayerComponent implements OnInit {
   }
 
   onFavorite () {
-    // ..
+    let track_id = this.playerState.track_window.current_track.id;
+    this.favoritesService.saveToFavorites(track_id)
+      .subscribe(() => {
+        this.favoritesService.fetchTrackIsFavorited(track_id)
+          .subscribe(res => {
+            this.favoritesService.$isFavorited.next(res[0]);
+          })
+      });
+  }
+
+  onRemoveFavorite () {
+    let track_id = this.playerState.track_window.current_track.id;
+    this.favoritesService.removeFromFavorites(track_id)
+      .subscribe(() => {
+        this.favoritesService.fetchTrackIsFavorited(track_id)
+          .subscribe(res => {
+            this.favoritesService.$isFavorited.next(res[0]);
+          })
+      });
+  }
+
+  onToggleFavorite () {
+    if (this.isFavorited) {
+      this.onRemoveFavorite();
+    } else {
+      this.onFavorite();
+    }
   }
 
   onToggleShuffle () {

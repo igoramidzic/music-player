@@ -44,6 +44,7 @@ import {TopArtistsAndTracksService} from './services/top-artists-and-tracks.serv
 import {PlaybackDeviceService} from './services/playback-device.service';
 import { DeviceNotificationComponent } from './components/player/device-notification/device-notification.component';
 import {RecommendedAlbumsService} from './services/recommended-albums.service';
+import {FavoritesService} from './services/favorites.service';
 
 @NgModule({
   declarations: [
@@ -84,7 +85,7 @@ import {RecommendedAlbumsService} from './services/recommended-albums.service';
     HttpClientModule,
     NgPipesModule
   ],
-  providers: [AuthService, CookieService, PlaybackSdkService, RecentlyListenedService, SimpleTimer, TopArtistsAndTracksService, PlaybackDeviceService, RecommendedAlbumsService],
+  providers: [AuthService, CookieService, PlaybackSdkService, RecentlyListenedService, SimpleTimer, TopArtistsAndTracksService, PlaybackDeviceService, RecommendedAlbumsService, FavoritesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
