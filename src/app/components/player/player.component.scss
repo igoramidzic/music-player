@@ -147,6 +147,9 @@
               width: 32px;
               .highlight {
                 color: $accent_color;
+                &:hover {
+                  color: $text_color;
+                }
               }
               .fa-play {
                 position: relative;
