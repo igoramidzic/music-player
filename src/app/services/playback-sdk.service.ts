@@ -24,7 +24,7 @@ export class PlaybackSdkService {
               private playbackDeviceService: PlaybackDeviceService) {
     window.onSpotifyWebPlaybackSDKReady = () => {
       this.authService.$user.subscribe(user => {
-        if (user && !window.player)
+        if (user && !window.player && user.product == 'premium')
           this.createPlayerConnection();
       })
     }

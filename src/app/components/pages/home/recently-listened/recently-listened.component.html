@@ -1,4 +1,4 @@
-<div class="recently-listened-container">
+<div class="recently-listened-container" *ngIf="recentlyListenedService.$recentlyPlayedList | async">
   <div class="header-container">
     <h1 class="section-header">Recently Listened</h1>
   </div>

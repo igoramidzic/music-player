@@ -8,8 +8,8 @@
 
     <div class="user-info-container" *ngIf="authService.user">
       <div class="content">
-        <div class="profile-image-container">
-          <img [routerLink]="['settings']" [src]="authService.user.images[0].url" alt="" class="pro-pic">
+        <div class="profile-image-container" *ngIf="authService.user.images[0]">
+          <img [routerLink]="['settings']" [src]="authService.user.images[0]?.url" alt="" class="pro-pic">
         </div>
         <div class="info-container">
           <span [routerLink]="['settings']" class="name">{{ authService.user.display_name || authService.user.email | shorten: 9: '...' }}</span>

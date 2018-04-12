@@ -1,7 +1,8 @@
 <div class="drag-bar"></div>
 
-<app-main-application *ngIf="authService.user"></app-main-application>
+<app-main-application
+  *ngIf="authService.user && authService.user.product == 'premium'"></app-main-application>
 
-<app-login *ngIf="!authService.user"></app-login>
+<app-login *ngIf="!authService.user || authService.user.product != 'premium'"></app-login>
 
 <app-beta-tag></app-beta-tag>

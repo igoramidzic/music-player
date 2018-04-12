@@ -2,9 +2,18 @@
 
   <div class="login-card-container">
     <div class="login-card">
-      <a class="login-btn" mat-button href="/api/login">
-        <i class="fab fa-spotify"></i> LOGIN WITH SPOTIFY
-      </a>
+      <div class="premium-error-container" *ngIf="!authService.user">
+        <a class="login-btn" mat-button href="/api/login">
+          <i class="fab fa-spotify"></i> LOGIN WITH SPOTIFY
+        </a>
+      </div>
+
+      <div class="premium-error-container"
+           *ngIf="authService.user && authService.user?.product != 'premium'">
+        <p class="header-apology">We're sorry,</p>
+        <p class="name">{{ authService.user?.name || authService.user?.email }}</p>
+        <p class="message">Your account must be <span class="highlight">Premium</span> for certain features to work. Please upgrade your account if you wish to use <strong>Music Player.</strong></p>
+      </div>
     </div>
   </div>
 </div>
