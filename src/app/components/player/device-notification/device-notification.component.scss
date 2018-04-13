@@ -2,6 +2,8 @@
 
 .device-notification-container {
   background-color: $accent_color;
+  position: relative;
+  top: 1px;
   .text-container {
     text-align: right;
     color: $primary_color;
