@@ -48,13 +48,17 @@ export class PlaybackSdkService {
     window.player.connect().then(success => {
       setTimeout(() => {
         this.playbackDeviceService.updateAvailableDevices();
-      },750);
+      },1000);
     });
 
     window.player.addListener('player_state_changed', (state: any) => {
       this.zone.run(() => {
         this.$playerState.next(state);
-        this.playbackDeviceService.updateAvailableDevices();
+        // temporary solution to bug where updateAvailableDevices is executed
+        // when user logs out or is unauthenticated by Spotify.
+        if (this.authService.user) {
+          this.playbackDeviceService.updateAvailableDevices();
+        }
       });
     });
   }

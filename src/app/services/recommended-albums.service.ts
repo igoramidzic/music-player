@@ -17,7 +17,6 @@ export class RecommendedAlbumsService {
       if (user) {
         this.topAristsAndTracksService.$usersTopTracks.subscribe(tracks => {
           if (tracks && tracks.items.length > 0) {
-            console.log(tracks)
             this.fetchRecommendedAlbums(tracks.items).subscribe((res: {tracks}) => {
               this.$recommendedAlbums.next(this.filterAndMapAlbumsUsingTracks(res.tracks));
             })
