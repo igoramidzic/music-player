@@ -83,7 +83,6 @@ app.get('/api/callback', function(req, res) {
 });
 
 app.get('/refresh_token', function(req, res) {
-
   // requesting access token from refresh token
   let refresh_token = req.query.refresh_token;
   let authOptions = {
