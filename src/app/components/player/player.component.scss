@@ -48,6 +48,7 @@
             .pro-pic {
               max-width: 60px;
               max-height: 60px;
+              outline: none;
             }
           }
 
@@ -61,17 +62,22 @@
             .shadow-box {
               position: absolute;
               height: 100%;
-              width: 100%;
+              width: 15px;
+              right: 0;
               -webkit-box-shadow: inset -35px 0px 29px -19px rgba(0,0,0,0.75);
               -moz-box-shadow: inset -35px 0px 29px -19px rgba(0,0,0,0.75);
               box-shadow: inset -35px 0px 29px -19px rgb(38, 38, 53)
             }
             .name {
+              outline: none;
               font-size: 13px;
               color: $text_color;
               overflow: hidden;
               white-space: nowrap;
               margin-bottom: 5px;
+              &:hover {
+                text-decoration: underline;
+              }
             }
             .artist {
               color: $secondary_color;

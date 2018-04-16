@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {PlaybackDeviceService} from '../../services/playback-device.service';
 
 @Component({
   selector: 'app-main-application',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainApplicationComponent implements OnInit {
 
-  constructor() { }
+  constructor(private playbackDeviceService: PlaybackDeviceService) { }
 
   ngOnInit() {
   }

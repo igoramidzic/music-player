@@ -46,14 +46,7 @@ export class RecommendedAlbumsService {
         return track;
       }
       return;
-    }).map(track => {
-      return {
-        imgURL: track.album.images[0].url,
-        albumName: track.album.name,
-        artist: track.artists[0].name,
-        id: track.album.id,
-      }
-    });
+    })
   }
 
   randomizeAlbums (albums, n) {

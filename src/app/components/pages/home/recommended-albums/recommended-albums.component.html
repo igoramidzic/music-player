@@ -10,10 +10,10 @@
     <ul class="album-list center-container">
       <li class="album-content"
           *ngFor="let album of recommendedAlbumsService.$recommendedAlbums | async">
-        <img class="album-img" src="{{ album.imgURL }}" alt="">
+        <img class="album-img" src="{{ album.album.images[0].url }}" alt="">
         <div class="album-info">
-          <h5 class="name">{{ album.albumName }}</h5>
-          <h6 class="artist">{{ album.artist }}</h6>
+          <h5 class="name">{{ album.album.name }}</h5>
+          <h6 class="artist">{{ album.artists[0].name }}</h6>
         </div>
       </li>
     </ul>

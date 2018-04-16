@@ -9,6 +9,7 @@ import {BrowseComponent} from './components/pages/browse/browse.component';
 import {RadioComponent} from './components/pages/radio/radio.component';
 import {PlaylistsComponent} from './components/pages/playlists/playlists.component';
 import {FeaturedComponent} from './components/pages/featured/featured.component';
+import {AlbumComponent} from './components/album/album.component';
 
 // Routes
 const appRoutes: Routes = [
@@ -20,7 +21,8 @@ const appRoutes: Routes = [
   { path: 'browse', component: BrowseComponent},
   { path: 'radio', component: RadioComponent},
   { path: 'playlists', component: PlaylistsComponent},
-  { path: 'featured', component: FeaturedComponent}
+  { path: 'featured', component: FeaturedComponent},
+  { path: 'album', component: AlbumComponent}
 ];
 
 @NgModule({

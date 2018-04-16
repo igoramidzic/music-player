@@ -9,12 +9,17 @@
         </div>
 
         <div class="content" *ngIf="playerState">
-          <div class="album-img-container">
-            <img src="{{ playerState?.track_window.current_track.album.images[0].url }}" class="pro-pic">
+          <div class="album-img-container image-hover-container"
+               [routerLink]="['/album']"
+               [queryParams]="{album_id: playerState?.track_window.current_track.album.uri.slice(14) }">
+            <img
+              src="{{ playerState?.track_window.current_track.album.images[0].url }}" class="pro-pic">
+            <div class="image-hover-cover"></div>
           </div>
           <div class="info-container" *ngIf="playerState">
             <div class="shadow-box"></div>
-            <div class="name">{{ playerState.track_window.current_track.name }}</div>
+            <div class="name" [routerLink]="['/album']"
+                 [queryParams]="{album_id: playerState?.track_window.current_track.album.uri.slice(14) }">{{ playerState.track_window.current_track.name }}</div>
             <div class="artist">{{ playerState.track_window.current_track.artists[0].name }}</div>
           </div>
         </div>

@@ -1,18 +1,21 @@
 <div class="next-song-container center-container">
   <div style="background-image: url('./assets/img/home-design1.png')" class="background-image-container"></div>
   <div class="wrapper center-content">
-    <div class="album-cover-container" *ngIf="playerState?.track_window?.current_track">
-      <img src="{{ playerState.track_window.current_track.album.images[0].url }}" alt="" class="album-img">
+    <div class="album-cover-container image-hover-container" *ngIf="playerState?.track_window?.current_track"
+         [routerLink]="['/album']"
+         [queryParams]="{album_id: playerState?.track_window.current_track.album.uri.slice(14) }">
+      <img src="{{ playerState?.track_window.current_track.album.images[0].url }}" alt="" class="album-img">
+      <div class="image-hover-cover"></div>
     </div>
     <div class="song-info-container center-container">
       <div class="center-content" *ngIf="playerState?.track_window?.current_track">
         <div class="song-info">
-          <h5 class="title">{{ playerState.track_window.current_track.name}}</h5>
-          <h6 class="artist">{{ playerState.track_window.current_track.artists[0].name }}</h6>
+          <h5 class="title">{{ playerState?.track_window.current_track?.name}}</h5>
+          <h6 class="artist">{{ playerState?.track_window.current_track.artists[0]?.name }}</h6>
         </div>
         <div class="next-song-info">
-          <p class="header" *ngIf="playerState.track_window.next_tracks[0].name">UP NEXT</p>
-          <p class="song">{{ playerState.track_window.next_tracks[0].name }}</p>
+          <p class="header" *ngIf="playerState?.track_window.next_tracks[0]?.name">UP NEXT</p>
+          <p class="song">{{ playerState?.track_window.next_tracks[0]?.name }}</p>
         </div>
       </div>
     </div>
