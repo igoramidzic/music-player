@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {ActivatedRoute, Router} from '@angular/router';
-import {Subject} from 'rxjs/Subject';
-import {Observable} from 'rxjs/Observable';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 import {CookieService} from 'angular2-cookie/core';
 
@@ -22,13 +20,12 @@ export class AuthService {
       if (params['access_token'] && params['refresh_token'] && !this.user) {
         this.storeRefreshTokenInCache(params['refresh_token']);
         this.getUserInfo(params['access_token']);
-
         // If access_token is in cookies
       } else if (this.cookieService.get('refresh_token') && !this.user) {
-        this.getNewAccessToken(this.cookieService.get('refresh_token'))
-          .subscribe((res: {access_token}) => {
-            this.getUserInfo(res.access_token);
-          });
+        // this.getNewAccessToken(this.cookieService.get('refresh_token'))
+        //   .subscribe((res: {access_token}) => {
+        //     this.getUserInfo(res.access_token);
+        //   });
       }
     });
 
@@ -46,8 +43,8 @@ export class AuthService {
       this.$user.next(user_data);
       this.refreshAccessTokenAfterOneHour();
 
-      // Navigates to `/` to remove query parameters
-      this.router.navigate(['']);
+      // // Navigates to `/` to remove query parameters
+      // this.router.navigate(['']);
     });
   }
 

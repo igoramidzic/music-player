@@ -7,48 +7,17 @@
   font-weight: 300;
 }
 
-.device-notification-shown {
-  .main-wrapper {
-    padding: 25px 0 116px 0 !important;
-  }
-}
-
 .home-container {
   color: $text_color;
   font-family: $primary_font;
   max-width: 1030px;
   margin: auto;
 
-  .main-wrapper {
-    height: 100vh;
-    padding: 25px 0 90px 0;
-  }
-
-  .scrollable-content {
-    overflow-y: scroll;
-    height: 100%;
-    padding: 25px;
-    min-width: 600px;
-    &::-webkit-scrollbar {
-      background-color: transparent;
-    }
-    &::-webkit-scrollbar-thumb {
-      background-color: $primary_color;
-    }
-    &::-webkit-scrollbar-track {
-      background-color: transparent;
-    }
-    &::-webkit-scrollbar-button {
-      background-color: orange;
-      color: purple;
-      display: none;
-    }
-  }
-
   .grid-container {
     display: grid;
     grid-template-columns: 5fr 2fr;
     grid-gap: 35px;
+    width: 100%;
   }
 }
 

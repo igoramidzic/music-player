@@ -1,21 +1,17 @@
-<div class="home-container" [ngClass]="{ 'mac': os == 'mac', 'not-mac': os != 'mac', 'device-notification-shown': playbackDeviceService.getShowNotification() }">
-  <div class="main-wrapper">
-    <div class="scrollable-content">
-      <div class="grid-container">
+<div class="home-container">
+  <div class="grid-container">
 
-        <div class="header-song-container">
-          <app-header-song></app-header-song>
-        </div>
-
-        <div class="recently-listened-container">
-          <app-recently-listened></app-recently-listened>
-        </div>
-
-        <div class="recommended-albums-container">
-          <app-recommended-albums></app-recommended-albums>
-        </div>
-
-      </div>
+    <div class="header-song-container">
+      <app-header-song></app-header-song>
     </div>
+
+    <div class="recently-listened-container">
+      <app-recently-listened></app-recently-listened>
+    </div>
+
+    <div class="recommended-albums-container">
+      <app-recommended-albums></app-recommended-albums>
+    </div>
+
   </div>
 </div>

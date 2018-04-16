@@ -1,0 +1,41 @@
+<div class="main-album-container">
+  <div class="center-container">
+    <div class="album-header-container bottom-content">
+      <div class="album-cover-container">
+        <img [src]="album?.images[0].url" alt="" class="album-cover-img">
+      </div>
+
+      <div class="album-info-container">
+        <h6 class="album-type">{{ album?.album_type | uppercase }}</h6>
+        <h1 class="album-name">{{ album?.name }}</h1>
+
+        <h6 class="album-artist-info">
+          <span class="dim-text by-label">By</span>
+          <span class="artist-list" *ngFor="let artist of album?.artists; let i = index;">
+            <a
+              (click)="navToArtist(artist.id)"
+              class="artist-link">{{ artist.name }}</a><span *ngIf="i != album.artists.length - 1">,</span>
+          </span>
+        </h6>
+
+        <div class="dim-text album-meta-container">
+          {{ album?.release_date | shorten:4 }}
+          <span style="font-weight: 700">·</span>
+          {{ album?.tracks.total }} songs, {{ getAlbumLength() }}
+
+        </div>
+
+        <div class="action-btn-container">
+          <button mat-button class="play-btn action-btn" (click)="onPlayAlbum()">Play</button>
+          <button mat-button class="save-btn action-btn" (click)="onSaveAlbum(album.id)">Save</button>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="album-tracks-container" *ngIf="album">
+      <app-tracks-list [album]="album"></app-tracks-list>
+    </div>
+  </div>
+
+</div>

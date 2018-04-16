@@ -25,8 +25,10 @@ export class PlayerComponent implements OnInit {
     this.st.newTimer('1sec',1);
     this.playbackSDKService.$playerState.subscribe(state => {
       this.playerState = state;
-      if (this.playerState)
+      console.log(state);
+      if (this.playerState) {
         this.currentPosition = this.playerState.position;
+      }
       this.toggleTimer();
     });
 

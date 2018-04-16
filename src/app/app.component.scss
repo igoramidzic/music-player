@@ -3,12 +3,12 @@
 // Colors
 $primary_color: #191926;
 $primary_color_dark: #242740;
-$primary_color_light: #30303E;
+$primary_color_light: #3c3c4e;
 $primary_color_transparent: rgba(#242332, 0.81);
 $secondary_color: #6D6F8E;
 $accent_color: #6FCBFA;
 $text_color: #DBDBDD;
-$spotify_color: #31CD64;
+$spotify_color: #2AB858;
 
 // Widths & Heights
 $player_height: 90px;
@@ -22,6 +22,25 @@ $primary_font: 'Roboto', sans-serif;
   background-color: $primary_color;
   font-family: $primary_font;
   color: $text_color;
+}
+
+.image-hover-container {
+  position: relative;
+  outline: none;
+  &:hover {
+    .image-hover-cover {
+      display: block !important;
+    }
+  }
+  .image-hover-cover {
+    background-color: rgba($primary_color, 0.42);
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+  }
 }
 
 .center-container {
@@ -38,6 +57,15 @@ $primary_font: 'Roboto', sans-serif;
     flex-direction: row;
     -ms-flex-pack: justify;
     justify-content: space-between;
+  }
+  .bottom-content {
+    align-items: flex-end;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -ms-flex-pack: justify;
+    justify-content: left;
   }
 }
 

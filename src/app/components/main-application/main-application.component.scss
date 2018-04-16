@@ -1,0 +1,37 @@
+@import '../../app.component.scss';
+
+.main-page-container {
+
+  .device-notification-shown {
+    .main-wrapper {
+      padding: 25px 0 116px 0 !important;
+    }
+  }
+
+  .main-wrapper {
+    height: 100vh;
+    padding: 25px 0 90px 0;
+  }
+
+  .scrollable-content-main-page {
+    overflow-y: scroll;
+    height: 100%;
+    padding: 25px;
+    min-width: 600px;
+    &::-webkit-scrollbar {
+      background-color: transparent;
+      display: none;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: $primary_color;
+    }
+    &::-webkit-scrollbar-track {
+      background-color: transparent;
+    }
+    &::-webkit-scrollbar-button {
+      background-color: orange;
+      color: purple;
+      display: none;
+    }
+  }
+}
