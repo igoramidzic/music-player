@@ -9,14 +9,6 @@ export class AlbumService {
   $album: BehaviorSubject<any> = new BehaviorSubject<any>(null);
 
   constructor(private http: HttpClient, private authService: AuthService) {
-    this.authService.$user.subscribe(user => {
-      if (user) {
-        this.fetchAlbumById("4F87p1aiFwHeU4uu65MaPV")
-          .subscribe(album => {
-            this.$album.next(album);
-          });
-      }
-    })
   }
 
   fetchAlbumById (album_id) {

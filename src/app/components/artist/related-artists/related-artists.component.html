@@ -1,0 +1,18 @@
+<ul class="related-artists-list">
+  <li class="related-artist-item center-container" *ngFor="let relatedArtist of relatedArtists">
+    <div class="center-content">
+      <div class="artist-img-container image-hover-container"
+           [ngStyle]="{'background-image': 'url(' + relatedArtist.images[0].url + ')'}"
+           [routerLink]="['/artist']"
+           [queryParams]="{artist_id: relatedArtist.id }">
+        <div class="image-hover-cover"></div>
+      </div>
+
+      <div class="artist-name-container">
+              <span class="name hover-underline"
+                    [routerLink]="['/artist']"
+                    [queryParams]="{artist_id: relatedArtist.id }">{{ relatedArtist.name }}</span>
+      </div>
+    </div>
+  </li>
+</ul>

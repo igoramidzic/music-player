@@ -1,0 +1,29 @@
+@import '../../../app.component.scss';
+
+.related-artists-list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  .center-content {
+    justify-content: left !important;
+  }
+  .related-artist-item {
+    margin-bottom: 16px;
+    .artist-img-container {
+      height: 48px;
+      width: 48px;
+      margin-right: 12px;
+      background: $primary_color no-repeat center center;
+      background-size: cover;
+      border-radius: 50%;
+    }
+
+    .artist-name-container {
+      .name {
+        font-size: 14px;
+        font-weight: 300;
+      }
+    }
+
+  }
+}

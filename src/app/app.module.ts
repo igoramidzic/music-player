@@ -49,6 +49,9 @@ import { AlbumComponent } from './components/album/album.component';
 import {AlbumService} from './services/album.service';
 import { TracksListComponent } from './components/album/tracks-list/tracks-list.component';
 import {PlayerApiService} from './services/player-api.service';
+import { ArtistComponent } from './components/artist/artist.component';
+import {ArtistService} from './services/artist.service';
+import { RelatedArtistsComponent } from './components/artist/related-artists/related-artists.component';
 
 @NgModule({
   declarations: [
@@ -75,6 +78,8 @@ import {PlayerApiService} from './services/player-api.service';
     DeviceNotificationComponent,
     AlbumComponent,
     TracksListComponent,
+    ArtistComponent,
+    RelatedArtistsComponent,
   ],
   imports: [
     BrowserModule,
@@ -92,7 +97,7 @@ import {PlayerApiService} from './services/player-api.service';
     NgPipesModule
   ],
   providers: [AuthService, CookieService, PlaybackSdkService, RecentlyListenedService, SimpleTimer, TopArtistsAndTracksService, PlaybackDeviceService, RecommendedAlbumsService, FavoritesService,
-  AlbumService, PlayerApiService],
+  AlbumService, PlayerApiService, ArtistService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,46 @@
+<div class="main-artist-container" *ngIf="artist">
+  <div class="center-container">
+    <div class="artist-header-container center-content">
+      <div class="artist-cover-container"
+           [ngStyle]="{'background-image': 'url(' + artist.images[0].url + ')'}">
+      </div>
+
+      <div class="artist-info-container">
+        <h6 class="artist-type">ARTIST</h6>
+        <h1 class="artist-name">{{ artist.name }}</h1>
+      </div>
+
+    </div>
+
+    <div class="buttons-and-followers-container center-container">
+      <div class="center-content">
+        <div class="action-btn-container">
+          <button mat-button class="play-btn action-btn" (click)="onPlayartist()">Play</button>
+          <button mat-button class="follow-btn action-btn" (click)="onFollowArtist(artist.id)">Follow</button>
+        </div>
+
+        <div class="followers-container dim-text" *ngIf="artist.followers">
+          <p class="line header">FOLLOWERS</p>
+          <p class="line follower-count">{{ artist.followers.total | number }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="artist-content-container">
+    <div class="artist-content-section popular-tracks-container">
+      <p class="section-header">Popular tracks</p>
+    </div>
+
+    <div class="artist-content-section related-artists-container">
+      <p class="section-header">Related artists</p>
+      <app-related-artists [relatedArtists]="relatedArtists"></app-related-artists>
+    </div>
+  </div>
+
+  <div class="artist-content-section albums-container">
+    <p class="section-header">Albums</p>
+  </div>
+
+</div>

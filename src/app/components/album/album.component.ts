@@ -10,7 +10,7 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class AlbumComponent implements OnInit {
 
-  album = null;
+  album: any = null;
 
   constructor(public albumService: AlbumService, private route: ActivatedRoute) {
     this.route.queryParams.subscribe(params => {
