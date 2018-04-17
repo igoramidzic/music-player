@@ -195,6 +195,15 @@
         &:last-child {
           margin-bottom: 0;
         }
+        &:hover {
+          color: darken($accent_color, 20%);
+          .name {
+            color: darken($text_color, 20%) !important;
+          }
+          .artist {
+            color: darken($secondary_color, 10%) !important;
+          }
+        }
         .name {
           color: $text_color;
           font-weight: 300;

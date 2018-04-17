@@ -11,10 +11,12 @@
 
         <h6 class="album-artist-info">
           <span class="dim-text by-label">By</span>
-          <span class="artist-list" *ngFor="let artist of album?.artists; let i = index;">
+          <span class="artist-list hover-underline" *ngFor="let artist of album?.artists; let i = index;">
             <a
               (click)="navToArtist(artist.id)"
-              class="artist-link">{{ artist.name }}</a><span *ngIf="i != album.artists.length - 1">,</span>
+              class="artist-link">
+              {{ artist.name }}</a>
+            <span *ngIf="i != album.artists.length - 1">,</span>
           </span>
         </h6>
 

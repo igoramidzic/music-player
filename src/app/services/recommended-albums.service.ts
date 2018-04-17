@@ -45,7 +45,7 @@ export class RecommendedAlbumsService {
       if (track.album.album_type == 'ALBUM') {
         return track;
       }
-      return;
+      return
     })
   }
 
