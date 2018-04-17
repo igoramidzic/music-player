@@ -24,10 +24,12 @@
       display: grid;
       grid-gap: 25px;
       .album-content {
-        .album-img {
-          width: 100%;
-          border-radius: 5px;
+        .album-cover-container {
           margin-bottom: 25px;
+          .album-img {
+            width: 100%;
+            border-radius: 5px;
+          }
         }
 
         .album-info {

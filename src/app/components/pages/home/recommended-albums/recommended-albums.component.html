@@ -10,10 +10,27 @@
     <ul class="album-list center-container">
       <li class="album-content"
           *ngFor="let album of recommendedAlbumsService.$recommendedAlbums | async">
-        <img class="album-img" src="{{ album.album.images[0].url }}" alt="">
+        <div class="album-cover-container image-hover-container"
+          [routerLink]="['/album']"
+          [queryParams]="{album_id: album.album.id }">
+          <img class="album-img" src="{{ album.album.images[0].url }}" alt="">
+          <div class="image-hover-cover"></div>
+        </div>
         <div class="album-info">
-          <h5 class="name">{{ album.album.name }}</h5>
-          <h6 class="artist">{{ album.artists[0].name }}</h6>
+          <h5 class="name">
+            <span class="hover-underline"
+              [routerLink]="['/album']"
+              [queryParams]="{album_id: album.album.id }">
+              {{ album.album.name }}
+            </span>
+          </h5>
+          <h6 class="artist">
+            <span class="hover-underline"
+              [routerLink]="['/artist']"
+              [queryParams]="{artist_id: album.artists[0].id }">
+              {{ album.artists[0].name }}
+            </span>
+          </h6>
         </div>
       </li>
     </ul>

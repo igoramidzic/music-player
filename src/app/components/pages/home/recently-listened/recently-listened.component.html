@@ -6,14 +6,29 @@
     <ul class="recent-songs-list center-container"
         *ngIf="recentlyListenedService.$recentlyPlayedList | async">
       <li class="recent-song"
-          *ngFor="let track of recentlyListenedService.$recentlyPlayedList | async">
+          *ngFor="let recentlyPlayed of recentlyListenedService.$recentlyPlayedList | async">
         <div class="center-content">
-          <div class="album-img">
-            <img class="img" src="{{ track.imgURL }}" alt="">
+          <div class="album-img image-hover-container"
+               [routerLink]="['/album']"
+               [queryParams]="{album_id: recentlyPlayed.track.album.id }">
+            <img class="img" src="{{ recentlyPlayed.track.album.images[0].url }}">
+            <div class="image-hover-cover"></div>
           </div>
           <div class="info">
-            <h5 class="title">{{ track.name }}</h5>
-            <h6 class="artist">{{ track.artist }}</h6>
+            <h5 class="title">
+              <span class="hover-underline"
+                [routerLink]="['/album']"
+                [queryParams]="{album_id: recentlyPlayed.track.album.id }">
+                {{ recentlyPlayed.track.name }}
+              </span>
+            </h5>
+            <h6 class="artist">
+              <span class="hover-underline"
+                [routerLink]="['/artist']"
+                [queryParams]="{artist_id: recentlyPlayed.track.artists[0].id }">
+                {{ recentlyPlayed.track.artists[0].name }}
+              </span>
+            </h6>
           </div>
         </div>
       </li>

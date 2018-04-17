@@ -27,17 +27,9 @@ export class RecentlyListenedService {
   }
 
   mapAndFilterRecentlyPlayedList (list, count) {
-    return list.map(item => {
-      return {
-        imgURL: item.track.album.images[0].url,
-        name: item.track.name,
-        artist: item.track.artists[0].name,
-        id: item.track.id
-      }
-    })
-      .filter((thing, index, self) =>
+    return list.filter((thing, index, self) =>
         index === self.findIndex((t) => (
-          t.id === thing.id
+          t.track.id === thing.track.id
         ))
       )
       .slice(0, count);
