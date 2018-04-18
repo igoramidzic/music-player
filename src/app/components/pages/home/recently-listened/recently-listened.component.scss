@@ -8,6 +8,7 @@
   .recent-songs-container {
     padding: 25px;
     background-color: $primary_color_transparent;
+    border-radius: 5px;
     .recent-songs-list {
       margin: 0;
       padding: 0;
@@ -19,11 +20,14 @@
           margin: 0;
         }
         .album-img {
+          height: 50px;
+          width: 50px;
+          min-height: 50px;
+          min-width: 50px;
           margin-right: 25px;
-          .img {
-            max-width: 50px;
-            border-radius: 6px;
-          }
+          border-radius: 6px;
+          background: $primary_color_light no-repeat center center;
+          background-size: cover;
         }
         .info {
           width: 100%;

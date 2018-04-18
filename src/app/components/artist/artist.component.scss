@@ -1,0 +1,142 @@
+@import '../../app.component.scss';
+
+.dim-text {
+  color: darken($text_color, 35%)
+}
+
+.highlight {
+  color: $accent_color !important;
+}
+
+.header-underline {
+  border-bottom: 1px solid $primary_color_light;
+}
+
+.main-artist-container {
+  .artist-header-container {
+    justify-content: left !important;
+    margin-bottom: 12px;
+    .artist-cover-container {
+      margin-right: 25px;
+      height: 128px;
+      width: 128px;
+      background: $primary_color no-repeat center center;
+      background-size: cover;
+      border-radius: 50%;
+    }
+
+    .artist-info-container {
+      .artist-type {
+        margin-bottom: 4px;
+        font-weight: 300;
+        color: $text_color;
+        font-size: 13px;
+        letter-spacing: 1px;
+      }
+
+      .artist-name {
+        font-weight: 700;
+        font-size: 52px;
+      }
+
+      .artist-artist-info {
+        margin-bottom: 4px;
+        .artist-link {
+          font-size: 13px;
+          font-weight: 300;
+          padding: 2px 0px;
+        }
+      }
+
+      .artist-meta-container {
+        font-size: 13px;
+        font-weight: 300;
+        margin-bottom: 10px;
+      }
+
+      .by-label {
+        font-size: 13px;
+        font-weight: 300;
+      }
+    }
+
+  }
+
+  .buttons-and-followers-container {
+    margin-bottom: 25px;
+
+    .action-btn-container {
+      .action-btn {
+        border-radius: 500px;
+        line-height: unset;
+        padding: 4px 32px;
+        outline: none;
+        min-width: unset;
+        font-weight: 400;
+        margin-right: 8px;
+      }
+      .play-btn {
+        background-color: $accent_color;
+        color: $primary_color;
+        border: 1px solid $accent_color;
+      }
+      .follow-btn {
+        border: 1px solid #ffffff;
+      }
+    }
+
+    .followers-container {
+      font-size: 12px;
+      letter-spacing: 1px;
+      font-weight: 300;
+      .line {
+        margin: 0;
+        line-height: 1.2;
+        text-align: right;
+      }
+    }
+  }
+
+  .artist-content-section {
+    .section-header {
+      color: $text_color;
+      font-size: 18px;
+      margin: 0 0 16px 0;
+    }
+  }
+
+  .artist-content-container {
+    margin-bottom: 25px;
+    display: grid;
+    grid-template-columns: 5fr 2fr;
+    grid-gap: 35px;
+    width: 100%;
+    .related-artists-list {
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+      .center-content {
+        justify-content: left !important;
+      }
+      .related-artist-item {
+        margin-bottom: 16px;
+        .artist-img-container {
+          height: 48px;
+          width: 48px;
+          margin-right: 12px;
+          background: $primary_color no-repeat center center;
+          background-size: cover;
+          border-radius: 50%;
+        }
+
+        .artist-name-container {
+          .name {
+            font-size: 14px;
+            font-weight: 300;
+          }
+        }
+
+      }
+    }
+  }
+}

@@ -22,14 +22,14 @@
               <span
                 class="hover-underline"
                 [routerLink]="['/album']"
-                [queryParams]="{album_id: playerState?.track_window.current_track.album.id }">
+                [queryParams]="{album_id: playerState?.track_window.current_track.album.uri.slice(14) }">
                 {{ playerState.track_window.current_track.name }}
               </span>
             </div>
             <div class="artist">
               <span class="hover-underline"
                 [routerLink]="['/artist']"
-                [queryParams]="{artist_id: playerState.track_window.current_track.artists[0].id }">
+                [queryParams]="{artist_id: playerState.track_window.current_track.artists[0].uri.slice(15) }">
                 {{ playerState.track_window.current_track.artists[0].name }}
               </span>
             </div>
