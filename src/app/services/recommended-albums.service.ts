@@ -43,9 +43,6 @@ export class RecommendedAlbumsService {
   filterAndMapAlbumsUsingTracks (tracks) {
     return tracks.filter(track => {
       if (track.album.album_type == 'ALBUM') {
-        console.log(track.album.album_type);
-        console.log(tracks);
-
         return track;
       }
       return

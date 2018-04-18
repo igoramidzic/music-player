@@ -1,6 +1,8 @@
-@import '../../app.component.scss';
+@import '../../../app.component.scss';
 
-.main-album-container {
+.album-container {
+  margin-bottom: 50px;
+
   .album-header-container {
     margin-bottom: 25px;
     .album-cover-container {

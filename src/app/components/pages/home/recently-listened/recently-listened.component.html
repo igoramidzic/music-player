@@ -9,9 +9,9 @@
           *ngFor="let recentlyPlayed of recentlyListenedService.$recentlyPlayedList | async">
         <div class="center-content">
           <div class="album-img image-hover-container"
+               [ngStyle]="{'background-image': 'url(' + recentlyPlayed.track.album.images[0].url + ')'}"
                [routerLink]="['/album']"
                [queryParams]="{album_id: recentlyPlayed.track.album.id }">
-            <img class="img" src="{{ recentlyPlayed.track.album.images[0].url }}">
             <div class="image-hover-cover"></div>
           </div>
           <div class="info">

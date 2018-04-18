@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import {RecommendedAlbumsService} from '../../services/recommended-albums.service';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {AlbumService} from '../../services/album.service';
 import {ActivatedRoute} from '@angular/router';
+import {TracksListComponent} from './tracks-list/tracks-list.component';
 
 @Component({
   selector: 'app-album',
@@ -11,6 +11,9 @@ import {ActivatedRoute} from '@angular/router';
 export class AlbumComponent implements OnInit {
 
   album: any = null;
+  albumIsSaved: boolean;
+  @ViewChild(TracksListComponent)
+  private trackListComponent = TracksListComponent;
 
   constructor(public albumService: AlbumService, private route: ActivatedRoute) {
     this.route.queryParams.subscribe(params => {
@@ -18,6 +21,11 @@ export class AlbumComponent implements OnInit {
         this.albumService.fetchAlbumById(params['album_id'])
           .subscribe(album => {
             this.album = album;
+          });
+
+        this.albumService.fetchIfSavedAblum(params['album_id'])
+          .subscribe(is_saved => {
+            this.albumIsSaved = is_saved[0];
           })
       }
     })
@@ -31,13 +39,31 @@ export class AlbumComponent implements OnInit {
     console.log(artist_id);
   }
 
-  onSaveAlbum (album_id) {
-    console.log("Save this album: " + album_id);
-  }
-
   onPlayAlbum () {
     this.albumService.playAlbum(this.album.uri, 0)
       .subscribe();
+  }
+
+  onSaveAlbum (album_id) {
+    this.albumService.saveAlbum(album_id)
+      .subscribe(() => {
+        this.albumService.fetchIfSavedAblum(this.album.id)
+          .subscribe(is_saved => {
+            this.albumIsSaved = is_saved[0];
+            this.trackListComponent.updateAllTracksAreFavorited();
+          })
+      });
+  }
+
+  onRemoveAlbum (album_id) {
+    this.albumService.removeAlbum(album_id)
+      .subscribe(() => {
+        this.albumService.fetchIfSavedAblum(this.album.id)
+          .subscribe(is_saved => {
+            this.albumIsSaved = is_saved[0];
+            this.trackListComponent.updateAllTracksAreFavorited();
+          })
+      })
   }
 
   getAlbumLength(): string {

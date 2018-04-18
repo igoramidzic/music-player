@@ -1,23 +1,22 @@
-<div class="track-list-container">
+<div class="track-list-container" *ngIf="popularTracks">
   <table class="track-table">
-    <tr class="table-row header-row">
-      <th class="table-column header-column num-header-col">#</th>
-      <th class="table-column header-column favorite-header-col"></th>
-      <th class="table-column header-column track-name-header-col">TITLE</th>
-      <th class="table-column header-column track-duration-header-col">
-        <i class="far fa-clock"></i>
-      </th>
-    </tr>
-
     <tr
       class="table-row track-row"
       [ngClass]="{ 'is_playing': playerState?.track_window.current_track.id == track?.id }"
-      *ngFor="let track of album?.tracks.items; let i = index;">
+      *ngFor="let track of popularTracks; let i = index;">
+
+      <td class="track-column table-column album-cover-col">
+        <div class="album-cover-container"
+          [ngStyle]="{'background-image': 'url(' + track.album.images[0].url + ')'}">
+
+        </div>
+      </td>
+
       <td class="track-column table-column num-col">
         <span class="play-btn-holder">
           <button
             class="player-btn play-pause-btn non-playing-btn"
-            (click)="onSetTrackToPlay(i)"
+            (click)="onSetTrackToPlay(track.uri)"
             *ngIf="playerState?.track_window.current_track.id != track?.id">
             <i class="fas fa-play"></i>
           </button>
@@ -36,7 +35,7 @@
           </button>
         </span>
         <span class="track-number" *ngIf="playerState?.track_window.current_track.id != track?.id">
-          {{ track.track_number }}
+          {{ i + 1 }}
         </span>
       </td>
       <td class="track-column table-column favorite-col">

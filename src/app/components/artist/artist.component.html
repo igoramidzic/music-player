@@ -15,8 +15,19 @@
     <div class="buttons-and-followers-container center-container">
       <div class="center-content">
         <div class="action-btn-container">
-          <button mat-button class="play-btn action-btn" (click)="onPlayartist()">Play</button>
-          <button mat-button class="follow-btn action-btn" (click)="onFollowArtist(artist.id)">Follow</button>
+          <button mat-button class="play-btn action-btn" (click)="onPlayArtistsPopularTracks(artist.uri)">Play</button>
+          <button mat-button
+                  class="follow-btn action-btn"
+                  *ngIf="!artist.is_following"
+                  (click)="onFollowArtist(artist.id)">
+            Follow
+          </button>
+          <button mat-button
+                  class="follow-btn action-btn highlight"
+                  *ngIf="artist.is_following"
+                  (click)="onUnfollowArtist(artist.id)">
+            Unfollow
+          </button>
         </div>
 
         <div class="followers-container dim-text" *ngIf="artist.followers">
@@ -30,17 +41,25 @@
 
   <div class="artist-content-container">
     <div class="artist-content-section popular-tracks-container">
-      <p class="section-header">Popular tracks</p>
+      <span *ngIf="popularTracks">
+        <p class="section-header">Popular tracks</p>
+        <app-popular-tracks [popularTracks]="popularTracks"></app-popular-tracks>
+      </span>
     </div>
 
     <div class="artist-content-section related-artists-container">
-      <p class="section-header">Related artists</p>
-      <app-related-artists [relatedArtists]="relatedArtists"></app-related-artists>
+      <span *ngIf="relatedArtists">
+        <p class="section-header">Related artists</p>
+        <app-related-artists [relatedArtists]="relatedArtists"></app-related-artists>
+      </span>
     </div>
   </div>
 
   <div class="artist-content-section albums-container">
-    <p class="section-header">Albums</p>
+    <span *ngIf="artistAlbums">
+      <p class="section-header header-underline">Albums</p>
+      <app-albums-list [artistAlbums]="artistAlbums"></app-albums-list>
+    </span>
   </div>
 
 </div>

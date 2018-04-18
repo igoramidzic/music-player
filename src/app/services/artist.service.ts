@@ -6,9 +6,17 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 @Injectable()
 export class ArtistService {
 
-  $artist: BehaviorSubject<any> = new BehaviorSubject<any>(null);
-
   constructor(private authService: AuthService, private http: HttpClient) {
+  }
+
+  playArtistsPopularTracks (artist_uri) {
+    return this.http.put('https://api.spotify.com/v1/me/player/play', {
+      'context_uri': artist_uri
+    }, {
+      headers: new HttpHeaders({
+        'Authorization': 'Bearer ' + this.authService.user.access_token
+      })
+    })
   }
 
   fetchArtistById (artist_id) {
