@@ -22,10 +22,10 @@ export class AuthService {
         this.getUserInfo(params['access_token']);
         // If access_token is in cookies
       } else if (this.cookieService.get('refresh_token') && !this.user) {
-        // this.getNewAccessToken(this.cookieService.get('refresh_token'))
-        //   .subscribe((res: {access_token}) => {
-        //     this.getUserInfo(res.access_token);
-        //   });
+        this.getNewAccessToken(this.cookieService.get('refresh_token'))
+          .subscribe((res: {access_token}) => {
+            this.getUserInfo(res.access_token);
+          });
       }
     });
 
