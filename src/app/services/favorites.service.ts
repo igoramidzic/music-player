@@ -39,8 +39,8 @@ export class FavoritesService {
     })
   }
 
-  fetchTrackIsFavorited (track_id) {
-    return this.http.get('https://api.spotify.com/v1/me/tracks/contains?ids=' + track_id, {
+  fetchTrackIsFavorited (track_ids) {
+    return this.http.get('https://api.spotify.com/v1/me/tracks/contains?ids=' + track_ids, {
       headers: new HttpHeaders({
         'Authorization': 'Bearer ' + this.authService.user.access_token
       })

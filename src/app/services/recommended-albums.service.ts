@@ -41,12 +41,12 @@ export class RecommendedAlbumsService {
   }
 
   filterAndMapAlbumsUsingTracks (tracks) {
-    return this.randomizeAlbums(tracks, 6).filter(track => {
+    return tracks.filter(track => {
       if (track.album.album_type == 'ALBUM') {
         return track;
       }
-      return;
-    })
+      return
+    }).splice(0, 6)
   }
 
   randomizeAlbums (albums, n) {

@@ -24,6 +24,13 @@ $primary_font: 'Roboto', sans-serif;
   color: $text_color;
 }
 
+.hover-underline {
+  outline: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
 .image-hover-container {
   position: relative;
   outline: none;

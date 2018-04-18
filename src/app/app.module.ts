@@ -49,6 +49,13 @@ import { AlbumComponent } from './components/album/album.component';
 import {AlbumService} from './services/album.service';
 import { TracksListComponent } from './components/album/tracks-list/tracks-list.component';
 import {PlayerApiService} from './services/player-api.service';
+import { ArtistComponent } from './components/artist/artist.component';
+import {ArtistService} from './services/artist.service';
+import { RelatedArtistsComponent } from './components/artist/related-artists/related-artists.component';
+import {TrackService} from './services/track.service';
+import { PopularTracksComponent } from './components/artist/popular-tracks/popular-tracks.component';
+import {FollowService} from './services/follow.service';
+import { AlbumsListComponent } from './components/artist/albums-list/albums-list.component';
 
 @NgModule({
   declarations: [
@@ -75,6 +82,10 @@ import {PlayerApiService} from './services/player-api.service';
     DeviceNotificationComponent,
     AlbumComponent,
     TracksListComponent,
+    ArtistComponent,
+    RelatedArtistsComponent,
+    PopularTracksComponent,
+    AlbumsListComponent,
   ],
   imports: [
     BrowserModule,
@@ -92,7 +103,7 @@ import {PlayerApiService} from './services/player-api.service';
     NgPipesModule
   ],
   providers: [AuthService, CookieService, PlaybackSdkService, RecentlyListenedService, SimpleTimer, TopArtistsAndTracksService, PlaybackDeviceService, RecommendedAlbumsService, FavoritesService,
-  AlbumService, PlayerApiService],
+  AlbumService, PlayerApiService, ArtistService, TrackService, FollowService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

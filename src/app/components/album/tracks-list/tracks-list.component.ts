@@ -12,6 +12,7 @@ export class TracksListComponent implements OnInit {
 
   @Input('album') album: any;
   playerState: any;
+  public static updateAllTracksAreFavorited: any;
 
   constructor(private playbackSdkService: PlaybackSdkService,
               private favoritesService: FavoritesService,
@@ -24,6 +25,19 @@ export class TracksListComponent implements OnInit {
       this.playerState = state;
     });
 
+    this.updateAllTracksAreFavorited();
+  }
+
+  onSetTrackToPlay (offset) {
+    this.albumService.playAlbum(this.album.uri, offset)
+      .subscribe();
+  }
+
+  onTogglePlayback () {
+    this.playbackSdkService.togglePlayback();
+  }
+
+  updateAllTracksAreFavorited () {
     let track_ids = [];
     this.album.tracks.items.forEach((track) => {
       track_ids.push(track.id);
@@ -36,15 +50,6 @@ export class TracksListComponent implements OnInit {
           track.is_favorited = res[i];
         })
       })
-  }
-
-  onSetTrackToPlay (offset) {
-    this.albumService.playAlbum(this.album.uri, offset)
-      .subscribe();
-  }
-
-  onTogglePlayback () {
-    this.playbackSdkService.togglePlayback();
   }
 
   onUpdateFavoritedTrack (track_id, index) {
@@ -67,6 +72,7 @@ export class TracksListComponent implements OnInit {
         this.onUpdateFavoritedTrack(track_id, index);
       });
   }
+
 }
 
 
