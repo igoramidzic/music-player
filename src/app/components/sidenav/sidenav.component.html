@@ -31,6 +31,14 @@
       </li>
       <li class="link-item">
         <a
+          [routerLink]="['favorites']"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{exact: false}"
+          class="link-btn"><i class="icon fas fa-folder"></i>
+          <span class="link-name">FAVORITES</span></a>
+      </li>
+      <li class="link-item">
+        <a
           [routerLink]="['browse']"
           routerLinkActive="active"
           [routerLinkActiveOptions]="{exact: false}"
