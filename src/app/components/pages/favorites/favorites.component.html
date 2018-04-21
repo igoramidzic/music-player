@@ -1,14 +1,16 @@
-<div class="main-album-container">
+<div class="main-favorites-container">
   <div class="center-container">
     <div class="album-header-container bottom-content">
       <div class="album-info-container">
-        <h1 class="album-name">Favorites</h1>
+        <h1 class="header">Favorites</h1>
 
         <div class="action-btn-container">
           <button mat-button class="play-btn action-btn"
-                  (click)="onPlayAlbum()">Play</button>
+                  (click)="onSetTrackToPlay()">Play</button>
         </div>
       </div>
     </div>
   </div>
+
+  <app-song-list *ngIf="tracks" [tracks]="tracks"></app-song-list>
 </div>

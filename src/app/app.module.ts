@@ -56,6 +56,8 @@ import {TrackService} from './services/track.service';
 import { PopularTracksComponent } from './components/artist/popular-tracks/popular-tracks.component';
 import {FollowService} from './services/follow.service';
 import { AlbumsListComponent } from './components/artist/albums-list/albums-list.component';
+import { FavoritesComponent } from './components/pages/favorites/favorites.component';
+import { SongListComponent } from './components/pages/favorites/song-list/song-list.component';
 
 @NgModule({
   declarations: [
@@ -85,6 +87,8 @@ import { AlbumsListComponent } from './components/artist/albums-list/albums-list
     RelatedArtistsComponent,
     PopularTracksComponent,
     AlbumsListComponent,
+    FavoritesComponent,
+    SongListComponent,
   ],
   imports: [
     BrowserModule,
