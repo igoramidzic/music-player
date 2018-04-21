@@ -25,7 +25,7 @@ export class PopularTracksComponent implements OnInit {
   }
 
   onSetTrackToPlay (track_uri) {
-    this.trackService.playTrack(track_uri)
+    this.trackService.playTrack([track_uri])
       .subscribe();
   }
 

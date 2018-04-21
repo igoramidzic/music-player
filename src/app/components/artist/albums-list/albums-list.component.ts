@@ -30,7 +30,13 @@ export class AlbumsListComponent implements OnInit {
             ))
           );
 
-        this.albumService.fetchIfSavedAblum(album_ids)
+        let new_album_ids = [];
+        this.albumsWithTracks.forEach((album) => {
+          new_album_ids.push(album.id);
+        });
+
+
+        this.albumService.fetchIfSavedAblum(new_album_ids)
           .subscribe((is_saved: any[]) => {
             is_saved.forEach((saved, i) => {
               this.albumsWithTracks[i].is_saved = saved;

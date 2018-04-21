@@ -10,6 +10,7 @@ import {PlaylistsComponent} from './components/pages/playlists/playlists.compone
 import {FeaturedComponent} from './components/pages/featured/featured.component';
 import {AlbumComponent} from './components/album/album.component';
 import {ArtistComponent} from './components/artist/artist.component';
+import {FavoritesComponent} from './components/pages/favorites/favorites.component';
 
 // Routes
 const appRoutes: Routes = [
@@ -21,6 +22,7 @@ const appRoutes: Routes = [
   { path: 'radio', component: RadioComponent},
   { path: 'playlists', component: PlaylistsComponent},
   { path: 'featured', component: FeaturedComponent},
+  { path: 'favorites', component: FavoritesComponent},
   { path: 'album', component: AlbumComponent},
   { path: 'artist', component: ArtistComponent}
 ];
