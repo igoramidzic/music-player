@@ -46,7 +46,11 @@ export class AuthService {
       this.refreshAccessTokenAfterOneHour();
 
       // Navigates to `/` to remove query parameters
-      this.router.navigate(['']);
+      this.route.queryParams.subscribe(params => {
+        if (params['access_token'] && params['refresh_token']) {
+          this.router.navigate([''], { queryParams: {'access_token': null, 'refresh_token': null}});
+        }
+      })
     });
   }
 
