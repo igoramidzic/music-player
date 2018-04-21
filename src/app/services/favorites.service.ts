@@ -47,4 +47,12 @@ export class FavoritesService {
     })
   }
 
+  fetchFavorites (offset, limit) {
+    return this.http.get('https://api.spotify.com/v1/me/tracks?offset=' + offset + '&limit=' + limit, {
+      headers: new HttpHeaders({
+        'Authorization': 'Bearer ' + this.authService.user.access_token
+      })
+    })
+  }
+
 }

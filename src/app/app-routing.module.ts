@@ -2,7 +2,6 @@ import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import {HomeComponent} from './components/pages/home/home.component';
 import {SettingsComponent} from './components/pages/settings/settings.component';
-import {NotificationsComponent} from './components/pages/notifications/notifications.component';
 import {SignupComponent} from './components/pages/signup/signup.component';
 import {LoginComponent} from './components/pages/login/login.component';
 import {BrowseComponent} from './components/pages/browse/browse.component';
@@ -11,18 +10,19 @@ import {PlaylistsComponent} from './components/pages/playlists/playlists.compone
 import {FeaturedComponent} from './components/pages/featured/featured.component';
 import {AlbumComponent} from './components/album/album.component';
 import {ArtistComponent} from './components/artist/artist.component';
+import {FavoritesComponent} from './components/pages/favorites/favorites.component';
 
 // Routes
 const appRoutes: Routes = [
   { path: '', component: HomeComponent},
   { path: 'settings', component: SettingsComponent},
-  { path: 'notifications', component: NotificationsComponent},
   { path: 'signup', component: SignupComponent},
   { path: 'login', component: LoginComponent},
   { path: 'browse', component: BrowseComponent},
   { path: 'radio', component: RadioComponent},
   { path: 'playlists', component: PlaylistsComponent},
   { path: 'featured', component: FeaturedComponent},
+  { path: 'favorites', component: FavoritesComponent},
   { path: 'album', component: AlbumComponent},
   { path: 'artist', component: ArtistComponent}
 ];

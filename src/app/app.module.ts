@@ -14,6 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgPipesModule } from 'ngx-pipes';
 import { SimpleTimer } from 'ng2-simple-timer';
 import {environment} from '../environments/environment';
+import { SimpleNotificationsModule } from 'angular2-notifications';
 
 import {AuthService} from './services/auth.service';
 import {CookieService} from 'angular2-cookie/core';
@@ -23,7 +24,6 @@ import { AppComponent } from './app.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { HomeComponent } from './components/pages/home/home.component';
 import { SettingsComponent } from './components/pages/settings/settings.component';
-import { NotificationsComponent } from './components/pages/notifications/notifications.component';
 import { SignupComponent } from './components/pages/signup/signup.component';
 import { LoginComponent } from './components/pages/login/login.component';
 import { PlayerComponent } from './components/player/player.component';
@@ -56,6 +56,8 @@ import {TrackService} from './services/track.service';
 import { PopularTracksComponent } from './components/artist/popular-tracks/popular-tracks.component';
 import {FollowService} from './services/follow.service';
 import { AlbumsListComponent } from './components/artist/albums-list/albums-list.component';
+import { FavoritesComponent } from './components/pages/favorites/favorites.component';
+import { SongListComponent } from './components/pages/favorites/song-list/song-list.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +65,6 @@ import { AlbumsListComponent } from './components/artist/albums-list/albums-list
     SidenavComponent,
     HomeComponent,
     SettingsComponent,
-    NotificationsComponent,
     SignupComponent,
     LoginComponent,
     PlayerComponent,
@@ -86,6 +87,8 @@ import { AlbumsListComponent } from './components/artist/albums-list/albums-list
     RelatedArtistsComponent,
     PopularTracksComponent,
     AlbumsListComponent,
+    FavoritesComponent,
+    SongListComponent,
   ],
   imports: [
     BrowserModule,
@@ -100,7 +103,16 @@ import { AlbumsListComponent } from './components/artist/albums-list/albums-list
     AngularFirestoreModule,
     AngularFireAuthModule,
     HttpClientModule,
-    NgPipesModule
+    NgPipesModule,
+    SimpleNotificationsModule.forRoot(<any>{
+      timeOut: 2000,
+      showProgressBar: false,
+      pauseOnHover: true,
+      clickToClose: false,
+      rtl: true,
+      clickIconToClose: true,
+      position: ['top', 'right']
+    })
   ],
   providers: [AuthService, CookieService, PlaybackSdkService, RecentlyListenedService, SimpleTimer, TopArtistsAndTracksService, PlaybackDeviceService, RecommendedAlbumsService, FavoritesService,
   AlbumService, PlayerApiService, ArtistService, TrackService, FollowService],

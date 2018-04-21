@@ -64,21 +64,15 @@ export class PlaybackSdkService {
   }
 
   togglePlayback () {
-    window.player.togglePlay().then(() => {
-      console.log('Toggled playback!');
-    });
+    return window.player.togglePlay()
   }
 
   nextTrack () {
-    window.player.nextTrack().then(() => {
-      console.log('Skipped to next track!');
-    });
+    return window.player.nextTrack()
   }
 
   previousTrack () {
-    window.player.previousTrack().then(() => {
-      console.log('Set to previous track!');
-    });
+    return window.player.previousTrack();
   }
 
   favoriteTrack () {
