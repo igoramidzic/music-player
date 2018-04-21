@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {ActivatedRoute, Router} from '@angular/router';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 import {CookieService} from 'angular2-cookie/core';
+import {NotificationsService} from 'angular2-notifications';
 
 @Injectable()
 export class AuthService {
@@ -13,7 +14,8 @@ export class AuthService {
   constructor(private http: HttpClient,
               private route: ActivatedRoute,
               private router: Router,
-              private cookieService: CookieService) {
+              private cookieService: CookieService,
+              private notificationsService: NotificationsService) {
 
     this.route.queryParams.subscribe(params => {
       // If access_token & refresh_token are in URL
@@ -22,10 +24,10 @@ export class AuthService {
         this.getUserInfo(params['access_token']);
         // If access_token is in cookies
       } else if (this.cookieService.get('refresh_token') && !this.user) {
-        // this.getNewAccessToken(this.cookieService.get('refresh_token'))
-        //   .subscribe((res: {access_token}) => {
-        //     this.getUserInfo(res.access_token);
-        //   });
+        this.getNewAccessToken(this.cookieService.get('refresh_token'))
+          .subscribe((res: {access_token}) => {
+            this.getUserInfo(res.access_token);
+          });
       }
     });
 
@@ -43,8 +45,8 @@ export class AuthService {
       this.$user.next(user_data);
       this.refreshAccessTokenAfterOneHour();
 
-      // // Navigates to `/` to remove query parameters
-      // this.router.navigate(['']);
+      // Navigates to `/` to remove query parameters
+      this.router.navigate(['']);
     });
   }
 
@@ -79,8 +81,8 @@ export class AuthService {
           })
       } else {
         // Remove user
-        // Display notification here when I implement notification system
         this.$user.next(null);
+        this.notificationsService.alert('You\'ve been logged out');
         window.player.disconnect();
       }
     }, 1000 * 60 * 60) // 60 minutes
