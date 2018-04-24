@@ -1,19 +1,14 @@
 <div [ngClass]="{ 'mac': os == 'mac', 'not-mac': os != 'mac', 'device-notification-shown': playbackDeviceService.getShowNotification() }" class="main-sidenav">
 
   <div class="scrollable-content">
-    <div class="signup-login-container" *ngIf="!authService.user">
-        <a mat-button class="auth-btn signup" href="https://www.spotify.com/us/signup/">Signup</a>
-        <a href="/api/login" mat-button class="auth-btn login">Login</a>
-    </div>
-
     <div class="user-info-container" *ngIf="authService.user">
       <div class="content">
         <div class="profile-image-container" *ngIf="authService.user.images[0]">
-          <img [routerLink]="['settings']" [src]="authService.user.images[0]?.url" alt="" class="pro-pic">
+          <img [src]="authService.user.images[0]?.url" alt="" class="pro-pic">
         </div>
         <div class="info-container">
-          <span [routerLink]="['settings']" class="name">{{ authService.user.display_name || authService.user.email | shorten: 9: '...' }}</span>
-          <span [routerLink]="['settings']" class="chip__small">{{ authService.user.product | ucfirst }}</span>
+          <span class="name">{{ authService.user.display_name || authService.user.email | shorten: 9: '...' }}</span>
+          <span class="chip__small">{{ authService.user.product | ucfirst }}</span>
         </div>
       </div>
     </div>
@@ -25,7 +20,7 @@
         <a
           [routerLink]="['/']"
           routerLinkActive="active"
-          [routerLinkActiveOptions]="{exact: false}"
+          [routerLinkActiveOptions]="{exact: true}"
           class="link-btn"><i class="icon fas fa-home"></i>
           <span class="link-name">YOUR ZONE</span></a>
       </li>
@@ -33,21 +28,12 @@
         <a
           [routerLink]="['favorites']"
           routerLinkActive="active"
-          [routerLinkActiveOptions]="{exact: false}"
-          class="link-btn"><i class="icon fas fa-folder"></i>
+          [routerLinkActiveOptions]="{exact: true}"
+          class="link-btn"><i class="icon far fa-heart"></i>
           <span class="link-name">FAVORITES</span></a>
       </li>
       <li class="link-item">
         <a
-          [routerLink]="['browse']"
-          routerLinkActive="active"
-          [routerLinkActiveOptions]="{exact: false}"
-          class="link-btn"><i class="icon fas fa-folder"></i>
-          <span class="link-name">BROWSE</span></a>
-      </li>
-      <li class="link-item">
-        <a
-          [routerLink]="['radio']"
           routerLinkActive="active"
           [routerLinkActiveOptions]="{exact: false}"
           class="link-btn"><i class="icon fab fa-mixcloud"></i>
@@ -55,7 +41,6 @@
       </li>
       <li class="link-item">
         <a
-          [routerLink]="['playlists']"
           routerLinkActive="active"
           [routerLinkActiveOptions]="{exact: false}"
           class="link-btn"><i class="icon fas fa-list"></i>
@@ -63,7 +48,6 @@
       </li>
       <li class="link-item">
         <a
-          [routerLink]="['featured']"
           routerLinkActive="active"
           [routerLinkActiveOptions]="{exact: false}"
           class="link-btn"><i class="icon fas fa-star"></i>
